@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Philippians 2 — Bible Study</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #050507;
+  --panel: rgba(20, 22, 28, 0.85);
+  --border: rgba(255, 255, 255, 0.1);
+  --ruby: #e03a3a;
+  --amber: #f0a500;
+  --sapphire: #2d8ce0;
+  --emerald: #2ec97e;
+  --violet: #a855f7;
+  --gold: #fbbf24;
+  --white: #f0f4ff;
+  --text: #d1d5db;
+  --lead-line: #1a1a1a; /* The dark 'metal' in stained glass */
+}
+
+/* Base Reset */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Lora', serif;
+  background-color: var(--bg);
+  color: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── STAINED GLASS BORDER FRAME ── */
+/* This creates a fixed decorative border around the mobile screen */
+.glass-frame {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 100;
+  border: 12px solid var(--lead-line);
+  border-image: repeating-linear-gradient(45deg, 
+    var(--ruby) 0%, var(--ruby) 10%, 
+    var(--sapphire) 10%, var(--sapphire) 20%, 
+    var(--emerald) 20%, var(--emerald) 30%, 
+    var(--amber) 30%, var(--amber) 40%) 12;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+}
+
+.glass-texture-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 99;
+}
+
+/* ── MAIN CONTENT LAYOUT ── */
+.container {
+  padding: 30px 24px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+section {
+  margin-bottom: 60px;
+  position: relative;
+}
+
+/* ── HERO SECTION ── */
+.hero {
+  text-align: center;
+  padding-top: 40px;
+}
+
+.hero-title {
+  font-family: 'Cinzel', serif;
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--amber), var(--gold), var(--ruby), var(--violet));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+}
+
+.hero-subtitle {
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.3em;
+  color: var(--amber);
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
+.hero-desc {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text);
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+}
+
+.gem-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.gem {
+  width: 10px; height: 10px;
+  transform: rotate(45deg);
+}
+
+/* ── SECTION HEADERS ── */
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+}
+
+.section-head h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+/* ── BUBBLE CARDS (CLAUDE STYLE) ── */
+.q-card {
+  background: var(--panel);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* The "Stained Glass" top accent on each card */
+.q-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 4px;
+}
+
+.q-card.ruby::before { background: var(--ruby); box-shadow: 0 0 10px var(--ruby); }
+.q-card.sapphire::before { background: var(--sapphire); box-shadow: 0 0 10px var(--sapphire); }
+.q-card.emerald::before { background: var(--emerald); box-shadow: 0 0 10px var(--emerald); }
+.q-card.violet::before { background: var(--violet); box-shadow: 0 0 10px var(--violet); }
+.q-card.amber::before { background: var(--amber); box-shadow: 0 0 10px var(--amber); }
+
+.q-num {
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.q-text {
+  font-size: 1.05rem;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+/* ── NOTES / SUB-POINTS ── */
+.q-notes {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.q-note {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--text);
+  display: flex;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.q-note::before {
+  content: '◆';
+  color: var(--amber);
+  font-size: 0.7rem;
+  margin-top: 3px;
+}
+
+/* ── REFLECTION HIGHLIGHT ── */
+.reflection-block {
+  text-align: center;
+  background: radial-gradient(circle at center, rgba(244,114,182,0.1) 0%, transparent 70%);
+  padding: 40px 10px;
+}
+
+.reflect-tag {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  color: var(--ruby);
+  letter-spacing: 0.3em;
+  margin-bottom: 15px;
+}
+
+.reflect-q {
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+/* ── APOLOGETICS QUOTE ── */
+.apol-quote {
+  border-left: 3px solid var(--sapphire);
+  background: rgba(45,140,224,0.1);
+  padding: 15px 20px;
+  border-radius: 0 15px 15px 0;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+/* ── FOOTER ── */
+.footer {
+  text-align: center;
+  padding: 60px 0;
+  border-top: 1px solid var(--border);
+}
+
+.cross {
+  font-size: 2.5rem;
+  color: var(--gold);
+  margin-bottom: 15px;
+  display: block;
+  text-shadow: 0 0 15px var(--amber);
+}
+
+/* Hide scrollbar but keep functionality */
+::-webkit-scrollbar { display: none; }
+
+</style>
+</head>
+<body>
+
+<div class="glass-frame"></div>
+<div class="glass-texture-overlay"></div>
+
+<div class="container">
+
+  <header class="hero">
+    <div class="hero-subtitle">Philippians 2</div>
+    <h1 class="hero-title">BIBLE STUDY</h1>
+    <div class="gem-row">
+      <div class="gem" style="background:var(--ruby)"></div>
+      <div class="gem" style="background:var(--amber)"></div>
+      <div class="gem" style="background:var(--sapphire)"></div>
+      <div class="gem" style="background:var(--emerald)"></div>
+      <div class="gem" style="background:var(--violet)"></div>
+    </div>
+    <p class="hero-desc">Exploring humility, unity, Christ's example, and working out your salvation.</p>
+  </header>
+
+  <section>
+    <div class="section-head">
+      <div class="gem" style="background:var(--amber)"></div>
+      <h2>Unity & Selflessness</h2>
+    </div>
+
+    <div class="q-card ruby">
+      <span class="q-num" style="color:var(--ruby)">Q 01 · Verse 1</span>
+      <p class="q-text">What do these terms mean? Does one specifically speak to you? Why does he say <em>if</em>?</p>
+    </div>
+
+    <div class="q-card sapphire">
+      <span class="q-num" style="color:var(--sapphire)">Q 02 · Verse 2</span>
+      <p class="q-text">How did we get so far from this in the modern church? How can the church get back to a spirit of unity?</p>
+    </div>
+
+    <div class="q-card emerald">
+      <span class="q-num" style="color:var(--emerald)">Q 03 · Verse 3</span>
+      <p class="q-text">Who is someone you know that does this well? How did their selflessness inspire you?</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <div class="gem" style="background:var(--ruby)"></div>
+      <h2>The Opposite of Humility</h2>
+    </div>
+    <div class="q-card amber">
+      <span class="q-num" style="color:var(--amber)">Q 04 · Verse 4</span>
+      <p class="q-text">Can you think of a biblical example where someone did the opposite? What were the ramifications?</p>
+      <div class="q-notes">
+        <div class="q-note">Judas</div>
+        <div class="q-note">Ananias and Saphira</div>
+        <div class="q-note">"Trying to justify himself" — Luke 10:29</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <div class="gem" style="background:var(--sapphire)"></div>
+      <h2>The Kenosis</h2>
+    </div>
+
+    <div class="q-card violet">
+      <span class="q-num" style="color:var(--violet)">Q 05 · Verse 5</span>
+      <p class="q-text">What is one way that Christ demonstrated this kind of humility?</p>
+    </div>
+
+    <div class="q-card sapphire">
+      <span class="q-num" style="color:var(--sapphire)">Q 06 · Verse 6</span>
+      <p class="q-text">What do you think he means by "did not consider equality something to be grasped"?</p>
+      <div class="q-notes"><div class="q-note">Seized or held onto</div></div>
+    </div>
+
+    <div class="q-card emerald">
+      <span class="q-num" style="color:var(--emerald)">Q 07 · Verse 7</span>
+      <p class="q-text">What do you think he means by <em>empties himself</em>?</p>
+      <div class="q-notes">
+        <div class="q-note">Poured out his privileges</div>
+        <div class="q-note">He removed his rights</div>
+        <div class="q-note">Willing to weaken</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reflection-block">
+    <p class="reflect-tag">PERSONAL REFLECTION</p>
+    <h2 class="reflect-q">"What's an area of obedience you need to humble yourself in?"</h2>
+    <div class="gem-row" style="margin-top:20px">
+        <div class="gem" style="background:var(--ruby)"></div>
+        <div class="gem" style="background:var(--violet)"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <div class="gem" style="background:var(--gold)"></div>
+      <h2>Apologetics</h2>
+    </div>
+    <div class="q-card ruby">
+      <span class="q-num" style="color:var(--ruby)">Q 09 · Verse 9</span>
+      <p class="q-text">How would you defend the doctrine of the Trinity?</p>
+      <div class="apol-quote">"This verse proves Jesus and God are not the same person… how could he exalt himself?"</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <div class="gem" style="background:var(--violet)"></div>
+      <h2>Universal Confession</h2>
+    </div>
+    <div class="q-card sapphire">
+      <span class="q-num" style="color:var(--sapphire)">Q 10 · Verse 10</span>
+      <p class="q-text">What do you think he means by <em>under the earth</em>?</p>
+      <div class="q-notes">
+        <div class="q-note">Revelation 20:1–6</div>
+        <div class="q-note">"Dead in Christ" — 1 Thess. 4:13–18</div>
+        <div class="q-note">"Rest of the dead" — John 5:28–29</div>
+        <div class="q-note">"Enemies" — 2 Peter 2:4 / Jude 1:6</div>
+      </div>
+    </div>
+    <div class="q-card emerald">
+      <span class="q-num" style="color:var(--emerald)">Q 11 · Verse 11</span>
+      <p class="q-text">So those who don't believe will even confess and bow?</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <div class="gem" style="background:var(--amber)"></div>
+      <h2>Working Out Salvation</h2>
+    </div>
+    <div class="q-card violet">
+      <span class="q-num" style="color:var(--violet)">Q 12 · Verse 12</span>
+      <p class="q-text">What does it mean to <em>work out</em> your salvation? I thought it was finished… what does fear and trembling have to do with it?</p>
+    </div>
+    <div class="q-card sapphire">
+      <span class="q-num" style="color:var(--sapphire)">Q 13 · Verse 13</span>
+      <p class="q-text">How can we find a balance between working out our salvation and "let go and let God"?</p>
+      <div class="q-notes">
+        <div class="q-note">Phil 4:6–7 | Eph 3:14–21 | Phil 2:1</div>
+      </div>
+    </div>
+    <div class="q-card ruby">
+      <span class="q-num" style="color:var(--ruby)">Q 14 · Verse 14</span>
+      <p class="q-text">How can we get to a heart posture that allows for this?</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <div class="gem" style="background:var(--emerald)"></div>
+      <h2>Running the Race</h2>
+    </div>
+    <div class="q-card amber">
+        <span class="q-num" style="color:var(--amber)">Q 15 · Verse 15</span>
+        <p class="q-text">What does this verse mean to you?</p>
+    </div>
+    <div class="q-card sapphire">
+      <span class="q-num" style="color:var(--sapphire)">Q 16 · Verse 16</span>
+      <p class="q-text">What is the word of life? What is the day of Christ? What does it mean to run in vain?</p>
+      <div class="q-notes">
+        <div class="q-note">Gal 2:2 | 1 Thess 3:5 | Matt 13</div>
+      </div>
+    </div>
+    <div class="q-card ruby">
+      <span class="q-num" style="color:var(--ruby)">Q 17 · Verse 17</span>
+      <p class="q-text">What is a drink offering? What do service and faith have to do with each other?</p>
+    </div>
+    <div class="q-card emerald">
+      <span class="q-num" style="color:var(--emerald)">Q 18 · Verse 18</span>
+      <p class="q-text">How can we rejoice and share joy in a crooked generation?</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span class="cross">✝</span>
+    <h3 style="font-family:'Cinzel'; color:var(--gold); margin-bottom:10px;">PHILIPPIANS 2</h3>
+    <p style="font-style:italic; font-size: 0.9rem; color:var(--text)">May this study lead to deeper humility, greater unity, and a heart more aligned with the mind of Christ.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
