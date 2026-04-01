@@ -1,438 +1,570 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Philippians 2 — Bible Study</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #050507;
-  --panel: rgba(20, 22, 28, 0.9);
-  --border: rgba(255, 255, 255, 0.1);
-  --ruby: #c32026;
-  --amber: #f59e0b;
-  --sapphire: #1d4ed8;
-  --emerald: #059669;
-  --violet: #7c3aed;
-  --gold: #fbbf24;
-  --white: #f0f4ff;
-  --text: #d1d5db;
-  --lead-line: #121212; 
+  --bg:#040406;--panel:rgba(10,12,18,0.92);
+  --ruby:#c32026;--ruby-g:rgba(195,32,38,0.15);
+  --amber:#f59e0b;--amber-g:rgba(245,158,11,0.12);
+  --sapphire:#2563eb;--sapphire-g:rgba(37,99,235,0.12);
+  --emerald:#059669;--emerald-g:rgba(5,150,105,0.10);
+  --violet:#7c3aed;--violet-g:rgba(124,58,237,0.12);
+  --rose:#e879a0;--gold:#fbbf24;--cyan:#22d3ee;
+  --white:#f0f4ff;--text:#c8cfe0;--lead:#0a0a0a;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Lora',serif;background:var(--bg);color:var(--white);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::-webkit-scrollbar{width:0;display:none}
+
+/* ═══════════════════════════════════════
+STAINED GLASS BORDER FRAME
+Real paned glass with lead caming
+═══════════════════════════════════════ */
+.glass-frame{position:fixed;inset:0;pointer-events:none;z-index:100}
+.glass-frame svg{width:100%;height:100%}
+
+/* Animated inner glow */
+.glass-frame::after{
+content:””;position:fixed;inset:14px;
+border:1px solid rgba(251,191,36,0.08);
+border-radius:4px;
+box-shadow:inset 0 0 60px rgba(0,0,0,0.8),inset 0 0 120px rgba(0,0,0,0.4);
+pointer-events:none;z-index:101;
 }
 
-/* Base Reset */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: 'Lora', serif;
-  background-color: var(--bg);
-  color: var(--white);
-  line-height: 1.6;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
+/* ═══════════════════════════════════════
+ANIMATIONS
+═══════════════════════════════════════ */
+@keyframes goldShimmer{
+0%,100%{opacity:0.6}50%{opacity:1}
+}
+@keyframes candleGlow{
+0%,100%{filter:blur(60px) brightness(1)}
+33%{filter:blur(65px) brightness(1.1)}
+66%{filter:blur(58px) brightness(0.95)}
+}
+@keyframes breathe{
+0%,100%{opacity:0.04}50%{opacity:0.08}
+}
+@keyframes roseRotate{
+0%{transform:translate(-50%,-50%) rotate(0deg)}
+100%{transform:translate(-50%,-50%) rotate(360deg)}
+}
+@keyframes beamPulse{
+0%,100%{opacity:0.06}50%{opacity:0.12}
+}
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(20px)}
+to{opacity:1;transform:translateY(0)}
 }
 
-/* ── THE CATHEDRAL BORDER ── */
-.glass-frame {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  pointer-events: none; /* Crucial so you can still click/scroll content */
-  z-index: 100;
-  border: 15px solid var(--lead-line);
-  /* This creates the "paned" glass look from your reference photos */
-  border-image: repeating-linear-gradient(
-    to bottom,
-    var(--ruby) 0%, var(--ruby) 14%,
-    var(--lead-line) 14%, var(--lead-line) 15%,
-    var(--sapphire) 15%, var(--sapphire) 29%,
-    var(--lead-line) 29%, var(--lead-line) 30%,
-    var(--emerald) 30%, var(--emerald) 44%,
-    var(--lead-line) 44%, var(--lead-line) 45%,
-    var(--amber) 45%, var(--amber) 59%,
-    var(--lead-line) 59%, var(--lead-line) 60%
-  ) 15;
-  box-shadow: inset 0 0 30px rgba(0,0,0,0.9);
+/* ═══════════════════════════════════════
+CONTENT LAYOUT
+═══════════════════════════════════════ */
+.container{
+padding:60px 24px 40px;
+max-width:520px;margin:0 auto;
+position:relative;z-index:10;
+}
+section{margin-bottom:0;position:relative}
+
+/* ═══════════════════════════════════════
+ARCH DIVIDERS between sections
+═══════════════════════════════════════ */
+.arch-divider{
+display:flex;justify-content:center;
+padding:40px 0;opacity:0.5;
+}
+.arch-divider svg{width:clamp(160px,50vw,280px);height:auto}
+.arch-divider.bright{opacity:0.7}
+
+/* ═══════════════════════════════════════
+HERO — Grand Cathedral Entrance
+═══════════════════════════════════════ */
+.hero{
+text-align:center;
+padding:30px 0 10px;
+position:relative;
+min-height:75vh;
+display:flex;flex-direction:column;
+justify-content:center;align-items:center;
 }
 
-.glass-texture-overlay {
-  position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
-  opacity: 0.05;
-  pointer-events: none;
-  z-index: 99;
+/* Central cathedral arch behind hero */
+.hero-arch{
+position:absolute;top:5%;left:50%;transform:translateX(-50%);
+width:clamp(300px,85vw,440px);height:auto;
+opacity:0.12;pointer-events:none;
 }
 
-/* ── MAIN CONTENT LAYOUT ── */
-.container {
-  padding: 50px 30px;
-  max-width: 500px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 10;
+/* Rose window behind title */
+.hero-rose{
+position:absolute;top:18%;left:50%;
+transform:translate(-50%,-50%);
+width:clamp(200px,55vw,320px);height:clamp(200px,55vw,320px);
+opacity:0.10;pointer-events:none;
+animation:breathe 8s ease-in-out infinite;
 }
 
-section {
-  margin-bottom: 60px;
-  position: relative;
+/* Descending light beam */
+.hero-beam{
+position:absolute;top:0;left:50%;transform:translateX(-50%);
+width:80px;height:70%;
+background:linear-gradient(180deg,rgba(251,191,36,0.12),rgba(251,191,36,0.02),transparent);
+filter:blur(20px);pointer-events:none;
+animation:beamPulse 6s ease-in-out infinite;
 }
 
-/* ── HERO SECTION ── */
-.hero {
-  text-align: center;
-  padding-top: 20px;
-  margin-bottom: 50px;
+/* Ambient candle glows */
+.hero-glow{
+position:absolute;border-radius:999px;pointer-events:none;
+animation:candleGlow 5s ease-in-out infinite;
 }
 
-.hero-title {
-  font-family: 'Cinzel', serif;
-  font-size: 3rem;
-  font-weight: 700;
-  line-height: 1;
-  background: linear-gradient(135deg, var(--gold), var(--amber), var(--ruby));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 10px;
+.hero-eyebrow{
+font-family:‘Cinzel’,serif;font-size:0.65rem;
+letter-spacing:0.5em;text-transform:uppercase;
+color:var(–gold);opacity:0.7;
+margin-bottom:12px;position:relative;z-index:2;
 }
 
-.hero-subtitle {
-  font-family: 'Cinzel', serif;
-  font-size: 0.8rem;
-  letter-spacing: 0.4em;
-  color: var(--gold);
-  text-transform: uppercase;
-  margin-bottom: 25px;
+.hero-chapter{
+font-family:‘Cinzel’,serif;
+font-size:clamp(3.2rem,12vw,5rem);font-weight:700;
+line-height:0.9;margin-bottom:4px;
+background:linear-gradient(180deg,var(–gold) 0%,#fff 40%,var(–gold) 60%,var(–amber) 100%);
+-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+filter:drop-shadow(0 0 30px rgba(251,191,36,0.4)) drop-shadow(0 4px 8px rgba(0,0,0,0.6));
+position:relative;z-index:2;
+animation:goldShimmer 4s ease-in-out infinite;
 }
 
-.gem-row {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
+.hero-verse{
+font-family:‘Cinzel’,serif;font-size:0.7rem;
+letter-spacing:0.35em;text-transform:uppercase;
+color:rgba(251,191,36,0.5);margin-bottom:24px;
+position:relative;z-index:2;
 }
 
-.gem {
-  width: 10px; height: 10px;
-  transform: rotate(45deg);
-  box-shadow: 0 0 10px rgba(255,255,255,0.1);
+.hero-sub{
+font-size:1rem;font-style:italic;font-weight:300;
+color:var(–text);max-width:38ch;line-height:1.75;
+margin-bottom:28px;position:relative;z-index:2;
 }
 
-/* ── SECTION HEADERS ── */
-.section-head {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 25px;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 10px;
+.gem-row{display:flex;justify-content:center;gap:10px;position:relative;z-index:2}
+.gem{width:10px;height:10px;transform:rotate(45deg)}
+
+/* ═══════════════════════════════════════
+SECTION HEADERS
+═══════════════════════════════════════ */
+.section-head{
+display:flex;align-items:center;gap:12px;
+margin-bottom:22px;padding-bottom:12px;
+border-bottom:1px solid rgba(251,191,36,0.12);
+}
+.section-head h2{
+font-family:‘Cinzel’,serif;font-size:0.85rem;
+letter-spacing:0.18em;text-transform:uppercase;
+color:var(–white);
 }
 
-.section-head h2 {
-  font-family: 'Cinzel', serif;
-  font-size: 1rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--white);
+/* ═══════════════════════════════════════
+QUESTION CARDS — Glowing Glass Panels
+═══════════════════════════════════════ */
+.q-card{
+background:var(–panel);
+backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+border:1px solid rgba(255,255,255,0.06);
+border-radius:20px;padding:22px 22px 20px;
+margin-bottom:16px;position:relative;overflow:hidden;
+box-shadow:0 12px 40px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.03);
+animation:fadeUp 0.6s ease-out both;
 }
 
-/* ── BUBBLE CARDS (CLAUDE STYLE) ── */
-.q-card {
-  background: var(--panel);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 24px;
-  margin-bottom: 20px;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+/* Colored glow bleed from top */
+.q-card::before{
+content:’’;position:absolute;
+top:-2px;left:0;right:0;height:3px;
+}
+.q-card::after{
+content:’’;position:absolute;
+top:0;left:10%;right:10%;height:60px;
+border-radius:0 0 50% 50%;
+filter:blur(25px);opacity:0.4;pointer-events:none;
 }
 
-/* The colored top accent stripe */
-.q-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; height: 4px;
+.q-card.ruby::before{background:var(–ruby);box-shadow:0 0 20px var(–ruby)}
+.q-card.ruby::after{background:var(–ruby)}
+.q-card.sapphire::before{background:var(–sapphire);box-shadow:0 0 20px var(–sapphire)}
+.q-card.sapphire::after{background:var(–sapphire)}
+.q-card.emerald::before{background:var(–emerald);box-shadow:0 0 20px var(–emerald)}
+.q-card.emerald::after{background:var(–emerald)}
+.q-card.violet::before{background:var(–violet);box-shadow:0 0 20px var(–violet)}
+.q-card.violet::after{background:var(–violet)}
+.q-card.amber::before{background:var(–amber);box-shadow:0 0 20px var(–amber)}
+.q-card.amber::after{background:var(–amber)}
+.q-card.gold::before{background:var(–gold);box-shadow:0 0 20px var(–gold)}
+.q-card.gold::after{background:var(–gold)}
+
+.q-num{
+font-family:‘Cinzel’,serif;font-size:0.7rem;font-weight:700;
+letter-spacing:0.15em;margin-bottom:10px;display:block;
+position:relative;z-index:1;
+}
+.q-text{font-size:1.05rem;color:var(–white);margin-bottom:8px;position:relative;z-index:1;line-height:1.7}
+.q-notes{margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.06);position:relative;z-index:1}
+.q-note{font-size:0.9rem;font-style:italic;color:var(–text);display:flex;gap:8px;margin-bottom:6px;line-height:1.55}
+.q-note::before{content:‘◆’;color:var(–gold);font-size:0.65rem;flex-shrink:0;margin-top:3px}
+
+/* ═══════════════════════════════════════
+REFLECTION — Rose Window Illumination
+═══════════════════════════════════════ */
+.reflection-block{
+text-align:center;
+padding:60px 16px;
+position:relative;
+border-radius:28px;
+border:1px solid rgba(195,32,38,0.15);
+background:radial-gradient(ellipse at center,rgba(195,32,38,0.08),transparent 60%);
+overflow:hidden;
 }
 
-.q-card.ruby::before { background: var(--ruby); box-shadow: 0 0 15px var(--ruby); }
-.q-card.sapphire::before { background: var(--sapphire); box-shadow: 0 0 15px var(--sapphire); }
-.q-card.emerald::before { background: var(--emerald); box-shadow: 0 0 15px var(--emerald); }
-.q-card.violet::before { background: var(--violet); box-shadow: 0 0 15px var(--violet); }
-.q-card.amber::before { background: var(--amber); box-shadow: 0 0 15px var(--amber); }
-
-.q-num {
-  font-family: 'Cinzel', serif;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  margin-bottom: 10px;
-  display: block;
+/* Animated rose window behind reflection */
+.reflect-rose{
+position:absolute;top:50%;left:50%;
+width:clamp(260px,70vw,400px);height:clamp(260px,70vw,400px);
+transform:translate(-50%,-50%);
+opacity:0.06;pointer-events:none;
+animation:roseRotate 120s linear infinite;
 }
 
-.q-text {
-  font-size: 1.1rem;
-  color: var(--white);
-  margin-bottom: 12px;
+.reflect-tag{
+font-family:‘Cinzel’,serif;font-size:0.7rem;
+color:var(–rose);letter-spacing:0.35em;
+margin-bottom:16px;position:relative;z-index:1;
+}
+.reflect-q{
+font-size:clamp(1.4rem,5.5vw,1.9rem);font-weight:500;
+line-height:1.3;font-family:‘Cinzel’,serif;
+position:relative;z-index:1;
+filter:drop-shadow(0 0 16px rgba(195,32,38,0.15));
 }
 
-/* ── NOTES / SUB-POINTS ── */
-.q-notes {
-  margin-top: 15px;
-  padding-top: 15px;
-  border-top: 1px solid rgba(255,255,255,0.08);
+/* ═══════════════════════════════════════
+APOLOGETICS QUOTE
+═══════════════════════════════════════ */
+.apol-quote{
+border-left:3px solid var(–sapphire);
+background:rgba(37,99,235,0.08);
+padding:16px 20px;border-radius:0 14px 14px 0;
+font-style:italic;font-size:0.95rem;color:var(–text);
+line-height:1.65;position:relative;z-index:1;
+margin-top:14px;
 }
 
-.q-note {
-  font-size: 0.95rem;
-  font-style: italic;
-  color: var(--text);
-  display: flex;
-  gap: 10px;
-  margin-bottom: 8px;
+/* ═══════════════════════════════════════
+FOOTER — Ascending Light
+═══════════════════════════════════════ */
+.footer{
+text-align:center;padding:40px 0 30px;
+position:relative;
 }
-
-.q-note::before {
-  content: '◆';
-  color: var(--amber);
-  font-size: 0.8rem;
+.footer-arch{
+position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+width:clamp(280px,80vw,400px);height:auto;
+opacity:0.08;pointer-events:none;
 }
-
-/* ── REFLECTION HIGHLIGHT ── */
-.reflection-block {
-  text-align: center;
-  background: radial-gradient(circle at center, rgba(195, 32, 38, 0.15) 0%, transparent 80%);
-  padding: 50px 10px;
-  border-radius: 30px;
-  border: 1px solid rgba(255,255,255,0.05);
+.cross{
+font-size:2.8rem;color:var(–gold);display:block;
+margin-bottom:16px;position:relative;z-index:1;
+filter:drop-shadow(0 0 30px rgba(251,191,36,0.5)) drop-shadow(0 0 60px rgba(251,191,36,0.2));
+animation:goldShimmer 4s ease-in-out infinite;
 }
-
-.reflect-tag {
-  font-family: 'Cinzel', serif;
-  font-size: 0.75rem;
-  color: var(--ruby);
-  letter-spacing: 0.3em;
-  margin-bottom: 15px;
+.footer-title{
+font-family:‘Cinzel’,serif;font-size:1.2rem;font-weight:700;
+letter-spacing:0.15em;position:relative;z-index:1;
+background:linear-gradient(135deg,var(–gold),#fff,var(–amber));
+-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+margin-bottom:8px;
 }
-
-.reflect-q {
-  font-size: 1.7rem;
-  font-weight: 500;
-  line-height: 1.3;
-  font-family: 'Cinzel', serif;
+.footer-verse{
+font-family:‘Cinzel’,serif;font-size:0.6rem;
+letter-spacing:0.3em;color:rgba(251,191,36,0.4);
+margin-bottom:16px;position:relative;z-index:1;
 }
-
-/* ── APOLOGETICS QUOTE ── */
-.apol-quote {
-  border-left: 3px solid var(--sapphire);
-  background: rgba(45,140,224,0.1);
-  padding: 18px 22px;
-  border-radius: 0 15px 15px 0;
-  font-style: italic;
-  font-size: 1rem;
-  color: var(--text);
+.footer-sub{
+font-style:italic;font-size:0.9rem;color:var(–text);
+max-width:36ch;margin:0 auto 24px;line-height:1.7;
+position:relative;z-index:1;
 }
-
-/* ── FOOTER ── */
-.footer {
-  text-align: center;
-  padding: 80px 0 40px;
-  border-top: 1px solid var(--border);
+.tag-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+.tag{
+background:rgba(10,12,18,0.8);border:1px solid rgba(251,191,36,0.15);
+border-radius:100px;padding:5px 14px;
+font-family:‘Cinzel’,serif;font-size:0.6rem;font-weight:600;
+letter-spacing:0.12em;text-transform:uppercase;color:var(–text);
 }
-
-.cross {
-  font-size: 3rem;
-  color: var(--gold);
-  margin-bottom: 20px;
-  display: block;
-  text-shadow: 0 0 20px var(--amber);
-}
-
-::-webkit-scrollbar { display: none; }
 </style>
+
 </head>
 <body>
 
-<div class="glass-frame"></div>
-<div class="glass-texture-overlay"></div>
+<!-- ═══════════════════════════════════════
+     STAINED GLASS BORDER — Real paned glass
+     ═══════════════════════════════════════ -->
+
+<div class="glass-frame" aria-hidden="true">
+<svg viewBox="0 0 400 800" preserveAspectRatio="none" width="100%" height="100%">
+  <defs>
+    <filter id="gf"><feGaussianBlur stdDeviation="0.5"/></filter>
+  </defs>
+  <!-- Lead caming structure -->
+  <rect x="0" y="0" width="400" height="800" fill="none" stroke="#0a0a0a" stroke-width="28"/>
+  <rect x="13" y="13" width="374" height="774" fill="none" stroke="#0a0a0a" stroke-width="2"/>
+  <!-- Left panes -->
+  <rect x="1" y="1" width="13" height="114" fill="var(--ruby)" opacity="0.6" filter="url(#gf)"/>
+  <rect x="1" y="116" width="13" height="114" fill="var(--sapphire)" opacity="0.5" filter="url(#gf)"/>
+  <rect x="1" y="231" width="13" height="114" fill="var(--emerald)" opacity="0.45" filter="url(#gf)"/>
+  <rect x="1" y="346" width="13" height="114" fill="var(--amber)" opacity="0.5" filter="url(#gf)"/>
+  <rect x="1" y="461" width="13" height="114" fill="var(--violet)" opacity="0.5" filter="url(#gf)"/>
+  <rect x="1" y="576" width="13" height="114" fill="var(--ruby)" opacity="0.45" filter="url(#gf)"/>
+  <rect x="1" y="691" width="13" height="108" fill="var(--sapphire)" opacity="0.5" filter="url(#gf)"/>
+  <!-- Right panes -->
+  <rect x="386" y="1" width="13" height="114" fill="var(--violet)" opacity="0.5" filter="url(#gf)"/>
+  <rect x="386" y="116" width="13" height="114" fill="var(--amber)" opacity="0.5" filter="url(#gf)"/>
+  <rect x="386" y="231" width="13" height="114" fill="var(--ruby)" opacity="0.45" filter="url(#gf)"/>
+  <rect x="386" y="346" width="13" height="114" fill="var(--sapphire)" opacity="0.5" filter="url(#gf)"/>
+  <rect x="386" y="461" width="13" height="114" fill="var(--emerald)" opacity="0.45" filter="url(#gf)"/>
+  <rect x="386" y="576" width="13" height="114" fill="var(--violet)" opacity="0.5" filter="url(#gf)"/>
+  <rect x="386" y="691" width="13" height="108" fill="var(--gold)" opacity="0.45" filter="url(#gf)"/>
+  <!-- Top panes -->
+  <rect x="14" y="1" width="80" height="13" fill="var(--amber)" opacity="0.45" filter="url(#gf)"/>
+  <rect x="95" y="1" width="80" height="13" fill="var(--ruby)" opacity="0.5" filter="url(#gf)"/>
+  <rect x="176" y="1" width="48" height="13" fill="var(--emerald)" opacity="0.4" filter="url(#gf)"/>
+  <rect x="225" y="1" width="48" height="13" fill="var(--sapphire)" opacity="0.45" filter="url(#gf)"/>
+  <rect x="274" y="1" width="54" height="13" fill="var(--violet)" opacity="0.5" filter="url(#gf)"/>
+  <rect x="329" y="1" width="56" height="13" fill="var(--amber)" opacity="0.45" filter="url(#gf)"/>
+  <!-- Bottom panes -->
+  <rect x="14" y="786" width="72" height="13" fill="var(--sapphire)" opacity="0.45" filter="url(#gf)"/>
+  <rect x="87" y="786" width="72" height="13" fill="var(--ruby)" opacity="0.5" filter="url(#gf)"/>
+  <rect x="160" y="786" width="80" height="13" fill="var(--gold)" opacity="0.4" filter="url(#gf)"/>
+  <rect x="241" y="786" width="72" height="13" fill="var(--emerald)" opacity="0.45" filter="url(#gf)"/>
+  <rect x="314" y="786" width="85" height="13" fill="var(--violet)" opacity="0.5" filter="url(#gf)"/>
+  <!-- Lead line separators on sides -->
+  <line x1="0" y1="115" x2="14" y2="115" stroke="#0a0a0a" stroke-width="2"/>
+  <line x1="0" y1="230" x2="14" y2="230" stroke="#0a0a0a" stroke-width="2"/>
+  <line x1="0" y1="345" x2="14" y2="345" stroke="#0a0a0a" stroke-width="2"/>
+  <line x1="0" y1="460" x2="14" y2="460" stroke="#0a0a0a" stroke-width="2"/>
+  <line x1="0" y1="575" x2="14" y2="575" stroke="#0a0a0a" stroke-width="2"/>
+  <line x1="0" y1="690" x2="14" y2="690" stroke="#0a0a0a" stroke-width="2"/>
+  <line x1="386" y1="115" x2="400" y2="115" stroke="#0a0a0a" stroke-width="2"/>
+  <line x1="386" y1="230" x2="400" y2="230" stroke="#0a0a0a" stroke-width="2"/>
+  <line x1="386" y1="345" x2="400" y2="345" stroke="#0a0a0a" stroke-width="2"/>
+  <line x1="386" y1="460" x2="400" y2="460" stroke="#0a0a0a" stroke-width="2"/>
+  <line x1="386" y1="575" x2="400" y2="575" stroke="#0a0a0a" stroke-width="2"/>
+  <line x1="386" y1="690" x2="400" y2="690" stroke="#0a0a0a" stroke-width="2"/>
+</svg>
+</div>
 
 <div class="container">
 
-  <header class="hero">
-    <div class="hero-subtitle">Philippians 2</div>
-    <h1 class="hero-title">BIBLE STUDY</h1>
-    <div class="gem-row">
-      <div class="gem" style="background:var(--ruby)"></div>
-      <div class="gem" style="background:var(--amber)"></div>
-      <div class="gem" style="background:var(--sapphire)"></div>
-      <div class="gem" style="background:var(--emerald)"></div>
-      <div class="gem" style="background:var(--violet)"></div>
-    </div>
-  </header>
+  <!-- ══ HERO ══ -->
 
-  <section>
-    <div class="section-head">
-      <div class="gem" style="background:var(--amber)"></div>
-      <h2>Unity & Selflessness</h2>
-    </div>
+  <header class="hero">
+    <!-- Cathedral arch -->
+    <svg class="hero-arch" viewBox="0 0 400 550" fill="none" aria-hidden="true">
+      <path d="M40 540 L40 200 Q40 40 200 40 Q360 40 360 200 L360 540" stroke="rgba(251,191,36,0.5)" stroke-width="2" fill="none"/>
+      <path d="M60 540 L60 210 Q60 65 200 65 Q340 65 340 210 L340 540" stroke="rgba(251,191,36,0.25)" stroke-width="1.5" fill="none"/>
+      <path d="M80 540 L80 220 Q80 90 200 90 Q320 90 320 220 L320 540" stroke="rgba(251,191,36,0.12)" stroke-width="1" fill="none"/>
+      <!-- Side pillars -->
+      <rect x="36" y="200" width="8" height="340" fill="rgba(251,191,36,0.06)"/>
+      <rect x="356" y="200" width="8" height="340" fill="rgba(251,191,36,0.06)"/>
+      <!-- Stained glass fills -->
+      <rect x="70" y="250" width="35" height="70" rx="14" fill="rgba(224,58,58,0.10)"/>
+      <rect x="115" y="250" width="30" height="70" rx="12" fill="rgba(37,99,235,0.08)"/>
+      <rect x="255" y="250" width="30" height="70" rx="12" fill="rgba(5,150,105,0.08)"/>
+      <rect x="295" y="250" width="35" height="70" rx="14" fill="rgba(124,58,237,0.10)"/>
+      <!-- Crown trefoil -->
+      <circle cx="200" cy="55" r="10" fill="none" stroke="rgba(251,191,36,0.3)" stroke-width="0.8"/>
+      <circle cx="192" cy="62" r="6" fill="none" stroke="rgba(251,191,36,0.2)" stroke-width="0.6"/>
+      <circle cx="208" cy="62" r="6" fill="none" stroke="rgba(251,191,36,0.2)" stroke-width="0.6"/>
+    </svg>
 
-    <div class="q-card ruby">
-      <span class="q-num" style="color:var(--ruby)">Q 01 · Verse 1</span>
-      <p class="q-text">What do these terms mean? Does one specifically speak to you? Why does he say <em>if</em>?</p>
-    </div>
+```
+<!-- Rose window -->
+<svg class="hero-rose" viewBox="0 0 300 300" aria-hidden="true">
+  <circle cx="150" cy="150" r="140" fill="none" stroke="rgba(251,191,36,0.4)" stroke-width="1.5"/>
+  <circle cx="150" cy="150" r="110" fill="none" stroke="rgba(251,191,36,0.25)" stroke-width="1"/>
+  <circle cx="150" cy="150" r="80" fill="none" stroke="rgba(251,191,36,0.15)" stroke-width="0.8"/>
+  <circle cx="150" cy="150" r="50" fill="none" stroke="rgba(251,191,36,0.10)" stroke-width="0.6"/>
+  <path d="M150 10 Q165 80 150 150 Q135 80 150 10Z" fill="rgba(195,32,38,0.2)"/>
+  <path d="M150 290 Q135 220 150 150 Q165 220 150 290Z" fill="rgba(37,99,235,0.15)"/>
+  <path d="M10 150 Q80 135 150 150 Q80 165 10 150Z" fill="rgba(5,150,105,0.15)"/>
+  <path d="M290 150 Q220 165 150 150 Q220 135 290 150Z" fill="rgba(124,58,237,0.15)"/>
+  <line x1="51" y1="51" x2="249" y2="249" stroke="rgba(251,191,36,0.08)" stroke-width="0.6"/>
+  <line x1="249" y1="51" x2="51" y2="249" stroke="rgba(251,191,36,0.08)" stroke-width="0.6"/>
+  <line x1="150" y1="10" x2="150" y2="290" stroke="rgba(251,191,36,0.06)" stroke-width="0.6"/>
+  <line x1="10" y1="150" x2="290" y2="150" stroke="rgba(251,191,36,0.06)" stroke-width="0.6"/>
+</svg>
 
-    <div class="q-card sapphire">
-      <span class="q-num" style="color:var(--sapphire)">Q 02 · Verse 2</span>
-      <p class="q-text">How did we get so far from this in the modern church? How can the church get back to a spirit of unity?</p>
-    </div>
+<div class="hero-beam"></div>
 
-    <div class="q-card emerald">
-      <span class="q-num" style="color:var(--emerald)">Q 03 · Verse 3</span>
-      <p class="q-text">Who is someone you know that does this well? How did their selflessness inspire you?</p>
-    </div>
-  </section>
+<!-- Ambient glows -->
+<div class="hero-glow" style="width:300px;height:300px;top:-60px;left:50%;transform:translateX(-50%);background:rgba(251,191,36,0.07)"></div>
+<div class="hero-glow" style="width:200px;height:200px;bottom:10%;left:15%;background:rgba(37,99,235,0.05)"></div>
+<div class="hero-glow" style="width:180px;height:180px;bottom:20%;right:10%;background:rgba(195,32,38,0.04)"></div>
 
-  <section>
-    <div class="section-head">
-      <div class="gem" style="background:var(--ruby)"></div>
-      <h2>The Opposite of Humility</h2>
-    </div>
-    <div class="q-card amber">
-      <span class="q-num" style="color:var(--amber)">Q 04 · Verse 4</span>
-      <p class="q-text">Can you think of a biblical example where someone did the opposite? What were the ramifications?</p>
-      <div class="q-notes">
-        <div class="q-note">Judas</div>
-        <div class="q-note">Ananias and Saphira</div>
-        <div class="q-note">"Trying to justify himself" — Luke 10:29</div>
-      </div>
-    </div>
-  </section>
+<p class="hero-eyebrow">Bible Study · Discussion Guide</p>
+<h1 class="hero-chapter">Philippians 2</h1>
+<p class="hero-verse">Verses 1 – 18</p>
+<p class="hero-sub">A guided discussion exploring humility, unity, Christ's example, and what it means to work out your salvation.</p>
+<div class="gem-row">
+  <div class="gem" style="background:var(--ruby);box-shadow:0 0 12px var(--ruby)"></div>
+  <div class="gem" style="background:var(--amber);box-shadow:0 0 12px var(--amber)"></div>
+  <div class="gem" style="background:var(--sapphire);box-shadow:0 0 12px var(--sapphire)"></div>
+  <div class="gem" style="background:var(--emerald);box-shadow:0 0 12px var(--emerald)"></div>
+  <div class="gem" style="background:var(--violet);box-shadow:0 0 12px var(--violet)"></div>
+</div>
+```
 
-  <section>
-    <div class="section-head">
-      <div class="gem" style="background:var(--sapphire)"></div>
-      <h2>The Kenosis</h2>
-    </div>
+  </header>
 
-    <div class="q-card violet">
-      <span class="q-num" style="color:var(--violet)">Q 05 · Verse 5</span>
-      <p class="q-text">What is one way that Christ demonstrated this kind of humility?</p>
-    </div>
+  <!-- ═══ Arch Divider ═══ -->
 
-    <div class="q-card sapphire">
-      <span class="q-num" style="color:var(--sapphire)">Q 06 · Verse 6</span>
-      <p class="q-text">What do you think he means by "did not consider equality something to be grasped"?</p>
-      <div class="q-notes"><div class="q-note">Seized or held onto</div></div>
-    </div>
+  <div class="arch-divider" aria-hidden="true"><svg viewBox="0 0 200 60" fill="none"><path d="M10 55 L10 25 Q10 5 100 5 Q190 5 190 25 L190 55" stroke="rgba(251,191,36,0.25)" stroke-width="1.2"/><circle cx="100" cy="12" r="4" fill="none" stroke="rgba(251,191,36,0.2)" stroke-width="0.6"/></svg></div>
 
-    <div class="q-card emerald">
-      <span class="q-num" style="color:var(--emerald)">Q 07 · Verse 7</span>
-      <p class="q-text">What do you think he means by <em>empties himself</em>?</p>
-      <div class="q-notes">
-        <div class="q-note">Poured out his privileges</div>
-        <div class="q-note">He removed his rights</div>
-        <div class="q-note">Willing to weaken</div>
-      </div>
-    </div>
-  </section>
+  <!-- ═══ UNITY ═══ -->
 
-  <section class="reflection-block">
-    <p class="reflect-tag">PERSONAL REFLECTION</p>
-    <h2 class="reflect-q">"What's an area of obedience you need to humble yourself in?"</h2>
-    <div class="gem-row" style="margin-top:20px">
-        <div class="gem" style="background:var(--ruby)"></div>
-        <div class="gem" style="background:var(--violet)"></div>
-    </div>
-  </section>
+  <section>
+    <div class="section-head"><div class="gem" style="background:var(--amber);box-shadow:0 0 8px var(--amber)"></div><h2>Unity & Selflessness</h2></div>
+    <div class="q-card ruby"><span class="q-num" style="color:var(--ruby)">Q 01 · Verse 1</span><p class="q-text">What do these terms mean? Does one specifically speak to you? Why does he say <em>if</em>?</p></div>
+    <div class="q-card sapphire"><span class="q-num" style="color:var(--sapphire)">Q 02 · Verse 2</span><p class="q-text">How did we get so far from this in the modern church? How can the church get back to a spirit of unity?</p></div>
+    <div class="q-card emerald"><span class="q-num" style="color:var(--emerald)">Q 03 · Verse 3</span><p class="q-text">Who is someone you know that does this well? How did their selflessness inspire you?</p></div>
+  </section>
 
-  <section>
-    <div class="section-head">
-      <div class="gem" style="background:var(--gold)"></div>
-      <h2>Apologetics</h2>
-    </div>
-    <div class="q-card ruby">
-      <span class="q-num" style="color:var(--ruby)">Q 09 · Verse 9</span>
-      <p class="q-text">How would you defend the doctrine of the Trinity?</p>
-      <div class="apol-quote">"This verse proves Jesus and God are not the same person… how could he exalt himself?"</div>
-    </div>
-  </section>
+  <div class="arch-divider" aria-hidden="true"><svg viewBox="0 0 200 60" fill="none"><path d="M10 55 L10 25 Q10 5 100 5 Q190 5 190 25 L190 55" stroke="rgba(251,191,36,0.2)" stroke-width="1"/></svg></div>
 
-  <section>
-    <div class="section-head">
-      <div class="gem" style="background:var(--violet)"></div>
-      <h2>Universal Confession</h2>
-    </div>
-    <div class="q-card sapphire">
-      <span class="q-num" style="color:var(--sapphire)">Q 10 · Verse 10</span>
-      <p class="q-text">What do you think he means by <em>under the earth</em>?</p>
-      <div class="q-notes">
-        <div class="q-note">Revelation 20:1–6</div>
-        <div class="q-note">"Dead in Christ" — 1 Thess. 4:13–18</div>
-        <div class="q-note">"Rest of the dead" — John 5:28–29</div>
-        <div class="q-note">"Enemies" — 2 Peter 2:4 / Jude 1:6</div>
-      </div>
-    </div>
-    <div class="q-card emerald">
-      <span class="q-num" style="color:var(--emerald)">Q 11 · Verse 11</span>
-      <p class="q-text">So those who don't believe will even confess and bow?</p>
-    </div>
-  </section>
+  <!-- ═══ OPPOSITE OF HUMILITY ═══ -->
 
-  <section>
-    <div class="section-head">
-      <div class="gem" style="background:var(--amber)"></div>
-      <h2>Working Out Salvation</h2>
-    </div>
-    <div class="q-card violet">
-      <span class="q-num" style="color:var(--violet)">Q 12 · Verse 12</span>
-      <p class="q-text">What does it mean to <em>work out</em> your salvation? I thought it was finished… what does fear and trembling have to do with it?</p>
-    </div>
-    <div class="q-card sapphire">
-      <span class="q-num" style="color:var(--sapphire)">Q 13 · Verse 13</span>
-      <p class="q-text">How can we find a balance between working out our salvation and "let go and let God"?</p>
-      <div class="q-notes">
-        <div class="q-note">Phil 4:6–7 | Eph 3:14–21 | Phil 2:1</div>
-      </div>
-    </div>
-    <div class="q-card ruby">
-      <span class="q-num" style="color:var(--ruby)">Q 14 · Verse 14</span>
-      <p class="q-text">How can we get to a heart posture that allows for this?</p>
-    </div>
-  </section>
+  <section>
+    <div class="section-head"><div class="gem" style="background:var(--ruby);box-shadow:0 0 8px var(--ruby)"></div><h2>The Opposite of Humility</h2></div>
+    <div class="q-card amber"><span class="q-num" style="color:var(--amber)">Q 04 · Verse 4</span><p class="q-text">Can you think of a biblical example where someone did the opposite? What were the ramifications?</p><div class="q-notes"><div class="q-note">Judas</div><div class="q-note">Ananias and Sapphira</div><div class="q-note">"Trying to justify himself" — Luke 10:29</div></div></div>
+  </section>
 
-  <section>
-    <div class="section-head">
-      <div class="gem" style="background:var(--emerald)"></div>
-      <h2>Running the Race</h2>
-    </div>
-    <div class="q-card amber">
-        <span class="q-num" style="color:var(--amber)">Q 15 · Verse 15</span>
-        <p class="q-text">What does this verse mean to you?</p>
-    </div>
-    <div class="q-card sapphire">
-      <span class="q-num" style="color:var(--sapphire)">Q 16 · Verse 16</span>
-      <p class="q-text">What is the word of life? What is the day of Christ? What does it mean to run in vain?</p>
-      <div class="q-notes">
-        <div class="q-note">Gal 2:2 | 1 Thess 3:5 | Matt 13</div>
-      </div>
-    </div>
-    <div class="q-card ruby">
-      <span class="q-num" style="color:var(--ruby)">Q 17 · Verse 17</span>
-      <p class="q-text">What is a drink offering? What do service and faith have to do with each other?</p>
-    </div>
-    <div class="q-card emerald">
-      <span class="q-num" style="color:var(--emerald)">Q 18 · Verse 18</span>
-      <p class="q-text">How can we rejoice and share joy in a crooked generation?</p>
-    </div>
-  </section>
+  <div class="arch-divider" aria-hidden="true"><svg viewBox="0 0 200 60" fill="none"><path d="M10 55 L10 25 Q10 5 100 5 Q190 5 190 25 L190 55" stroke="rgba(37,99,235,0.25)" stroke-width="1"/><path d="M30 55 L30 30 Q30 12 100 12 Q170 12 170 30 L170 55" stroke="rgba(37,99,235,0.12)" stroke-width="0.8"/></svg></div>
 
-  <footer class="footer">
-    <span class="cross">✝</span>
-    <h3 style="font-family:'Cinzel'; color:var(--gold); margin-bottom:10px;">PHILIPPIANS 2</h3>
-    <p style="font-style:italic; font-size: 0.95rem; color:var(--text)">May this study lead to deeper humility, greater unity, and a heart more aligned with the mind of Christ.</p>
-  </footer>
+  <!-- ═══ KENOSIS ═══ -->
+
+  <section>
+    <div class="section-head"><div class="gem" style="background:var(--sapphire);box-shadow:0 0 8px var(--sapphire)"></div><h2>The Kenosis</h2></div>
+    <div class="q-card violet"><span class="q-num" style="color:var(--violet)">Q 05 · Verse 5</span><p class="q-text">What is one way that Christ demonstrated this kind of humility?</p></div>
+    <div class="q-card sapphire"><span class="q-num" style="color:var(--sapphire)">Q 06 · Verse 6</span><p class="q-text">What do you think he means by "did not consider equality something to be grasped"?</p><div class="q-notes"><div class="q-note">Seized or held onto</div></div></div>
+    <div class="q-card emerald"><span class="q-num" style="color:var(--emerald)">Q 07 · Verse 7</span><p class="q-text">What do you think he means by <em>empties himself</em>?</p><div class="q-notes"><div class="q-note">Poured out his privileges</div><div class="q-note">He removed his rights</div><div class="q-note">Willing to weaken</div></div></div>
+  </section>
+
+  <div class="arch-divider bright" aria-hidden="true"><svg viewBox="0 0 200 60" fill="none"><path d="M10 55 L10 25 Q10 5 100 5 Q190 5 190 25 L190 55" stroke="rgba(195,32,38,0.3)" stroke-width="1.2"/><circle cx="100" cy="12" r="6" fill="none" stroke="rgba(195,32,38,0.2)" stroke-width="0.8"/><circle cx="100" cy="12" r="3" fill="rgba(195,32,38,0.15)"/></svg></div>
+
+  <!-- ═══ REFLECTION ═══ -->
+
+  <section class="reflection-block">
+    <!-- Slowly rotating rose window -->
+    <svg class="reflect-rose" viewBox="0 0 300 300" aria-hidden="true">
+      <circle cx="150" cy="150" r="145" fill="none" stroke="rgba(195,32,38,0.3)" stroke-width="1.2"/>
+      <circle cx="150" cy="150" r="120" fill="none" stroke="rgba(251,191,36,0.2)" stroke-width="1"/>
+      <circle cx="150" cy="150" r="95" fill="none" stroke="rgba(195,32,38,0.15)" stroke-width="0.8"/>
+      <circle cx="150" cy="150" r="70" fill="none" stroke="rgba(251,191,36,0.10)" stroke-width="0.6"/>
+      <circle cx="150" cy="150" r="45" fill="none" stroke="rgba(195,32,38,0.08)" stroke-width="0.5"/>
+      <path d="M150 5 Q160 75 150 150 Q140 75 150 5Z" fill="rgba(195,32,38,0.18)"/>
+      <path d="M150 295 Q140 225 150 150 Q160 225 150 295Z" fill="rgba(37,99,235,0.12)"/>
+      <path d="M5 150 Q75 140 150 150 Q75 160 5 150Z" fill="rgba(5,150,105,0.12)"/>
+      <path d="M295 150 Q225 160 150 150 Q225 140 295 150Z" fill="rgba(124,58,237,0.12)"/>
+      <path d="M47 47 Q98 98 150 150 Q98 98 47 47Z" fill="rgba(245,158,11,0.10)"/>
+      <path d="M253 47 Q202 98 150 150" stroke="rgba(232,121,160,0.12)" stroke-width="6" fill="none"/>
+      <path d="M47 253 Q98 202 150 150" stroke="rgba(34,211,238,0.10)" stroke-width="6" fill="none"/>
+      <path d="M253 253 Q202 202 150 150" stroke="rgba(251,191,36,0.10)" stroke-width="6" fill="none"/>
+      <!-- Radial lines -->
+      <line x1="150" y1="5" x2="150" y2="295" stroke="rgba(251,191,36,0.06)" stroke-width="0.5"/>
+      <line x1="5" y1="150" x2="295" y2="150" stroke="rgba(251,191,36,0.06)" stroke-width="0.5"/>
+      <line x1="47" y1="47" x2="253" y2="253" stroke="rgba(251,191,36,0.04)" stroke-width="0.5"/>
+      <line x1="253" y1="47" x2="47" y2="253" stroke="rgba(251,191,36,0.04)" stroke-width="0.5"/>
+    </svg>
+    <p class="reflect-tag">Q 08 · VERSE 8 · PERSONAL REFLECTION</p>
+    <h2 class="reflect-q">"What's an area of obedience you need to humble yourself in?"</h2>
+    <div class="gem-row" style="margin-top:24px"><div class="gem" style="background:var(--ruby);box-shadow:0 0 10px var(--ruby)"></div><div class="gem" style="background:var(--violet);box-shadow:0 0 10px var(--violet)"></div></div>
+  </section>
+
+  <div class="arch-divider" aria-hidden="true"><svg viewBox="0 0 200 60" fill="none"><path d="M10 55 L10 25 Q10 5 100 5 Q190 5 190 25 L190 55" stroke="rgba(251,191,36,0.25)" stroke-width="1"/></svg></div>
+
+  <!-- ═══ APOLOGETICS ═══ -->
+
+  <section>
+    <div class="section-head"><div class="gem" style="background:var(--gold);box-shadow:0 0 8px var(--gold)"></div><h2>Apologetics</h2></div>
+    <div class="q-card gold"><span class="q-num" style="color:var(--gold)">Q 09 · Verse 9</span><p class="q-text">How would you defend the doctrine of the Trinity?</p><div class="apol-quote">"This verse proves Jesus and God are not the same person… how could he exalt himself?"</div></div>
+  </section>
+
+  <div class="arch-divider" aria-hidden="true"><svg viewBox="0 0 200 60" fill="none"><path d="M10 55 L10 25 Q10 5 100 5 Q190 5 190 25 L190 55" stroke="rgba(124,58,237,0.25)" stroke-width="1"/></svg></div>
+
+  <!-- ═══ CONFESSION ═══ -->
+
+  <section>
+    <div class="section-head"><div class="gem" style="background:var(--violet);box-shadow:0 0 8px var(--violet)"></div><h2>Universal Confession</h2></div>
+    <div class="q-card sapphire"><span class="q-num" style="color:var(--sapphire)">Q 10 · Verse 10</span><p class="q-text">What do you think he means by <em>under the earth</em>?</p><div class="q-notes"><div class="q-note">Revelation 20:1–6</div><div class="q-note">"Dead in Christ" — 1 Thess. 4:13–18</div><div class="q-note">"Rest of the dead" — John 5:28–29</div><div class="q-note">"Enemies" — 2 Peter 2:4 / Jude 1:6</div></div></div>
+    <div class="q-card emerald"><span class="q-num" style="color:var(--emerald)">Q 11 · Verse 11</span><p class="q-text">So those who don't believe will even confess and bow?</p></div>
+  </section>
+
+  <div class="arch-divider" aria-hidden="true"><svg viewBox="0 0 200 60" fill="none"><path d="M10 55 L10 25 Q10 5 100 5 Q190 5 190 25 L190 55" stroke="rgba(5,150,105,0.25)" stroke-width="1"/></svg></div>
+
+  <!-- ═══ SALVATION ═══ -->
+
+  <section>
+    <div class="section-head"><div class="gem" style="background:var(--amber);box-shadow:0 0 8px var(--amber)"></div><h2>Working Out Salvation</h2></div>
+    <div class="q-card violet"><span class="q-num" style="color:var(--violet)">Q 12 · Verse 12</span><p class="q-text">What does it mean to <em>work out</em> your salvation? I thought it was finished… what does fear and trembling have to do with it?</p></div>
+    <div class="q-card sapphire"><span class="q-num" style="color:var(--sapphire)">Q 13 · Verse 13</span><p class="q-text">How can we find a balance between working out our salvation and "let go and let God"?</p><div class="q-notes"><div class="q-note">Phil 4:6–7 | Eph 3:14–21 | Phil 2:1</div></div></div>
+    <div class="q-card ruby"><span class="q-num" style="color:var(--ruby)">Q 14 · Verse 14</span><p class="q-text">How can we get to a heart posture that allows for this?</p></div>
+  </section>
+
+  <div class="arch-divider" aria-hidden="true"><svg viewBox="0 0 200 60" fill="none"><path d="M10 55 L10 25 Q10 5 100 5 Q190 5 190 25 L190 55" stroke="rgba(251,191,36,0.2)" stroke-width="1"/></svg></div>
+
+  <!-- ═══ RUNNING THE RACE ═══ -->
+
+  <section>
+    <div class="section-head"><div class="gem" style="background:var(--emerald);box-shadow:0 0 8px var(--emerald)"></div><h2>Running the Race</h2></div>
+    <div class="q-card amber"><span class="q-num" style="color:var(--amber)">Q 15 · Verse 15</span><p class="q-text">What does this verse mean to you?</p></div>
+    <div class="q-card sapphire"><span class="q-num" style="color:var(--sapphire)">Q 16 · Verse 16</span><p class="q-text">What is the word of life? What is the day of Christ? What does it mean to run in vain?</p><div class="q-notes"><div class="q-note">Gal 2:2 | 1 Thess 3:5 | Matt 13</div></div></div>
+    <div class="q-card ruby"><span class="q-num" style="color:var(--ruby)">Q 17 · Verse 17</span><p class="q-text">What is a drink offering? What do service and faith have to do with each other?</p></div>
+    <div class="q-card emerald"><span class="q-num" style="color:var(--emerald)">Q 18 · Verse 18</span><p class="q-text">How can we rejoice and share joy in a crooked generation?</p></div>
+  </section>
+
+  <div class="arch-divider bright" aria-hidden="true"><svg viewBox="0 0 200 80" fill="none"><path d="M5 75 L5 30 Q5 5 100 5 Q195 5 195 30 L195 75" stroke="rgba(251,191,36,0.3)" stroke-width="1.5"/><path d="M25 75 L25 35 Q25 15 100 15 Q175 15 175 35 L175 75" stroke="rgba(251,191,36,0.15)" stroke-width="1"/><circle cx="100" cy="12" r="5" fill="none" stroke="rgba(251,191,36,0.25)" stroke-width="0.8"/></svg></div>
+
+  <!-- ═══ FOOTER ═══ -->
+
+  <footer class="footer">
+    <svg class="footer-arch" viewBox="0 0 300 200" fill="none" aria-hidden="true">
+      <path d="M20 195 L20 80 Q20 10 150 10 Q280 10 280 80 L280 195" stroke="rgba(251,191,36,0.15)" stroke-width="1.5" fill="none"/>
+      <path d="M40 195 L40 90 Q40 30 150 30 Q260 30 260 90 L260 195" stroke="rgba(251,191,36,0.08)" stroke-width="1" fill="none"/>
+      <circle cx="150" cy="50" r="18" fill="none" stroke="rgba(251,191,36,0.12)" stroke-width="0.8"/>
+      <rect x="60" y="100" width="25" height="50" rx="10" fill="rgba(195,32,38,0.06)"/>
+      <rect x="95" y="100" width="20" height="50" rx="8" fill="rgba(37,99,235,0.05)"/>
+      <rect x="185" y="100" width="20" height="50" rx="8" fill="rgba(5,150,105,0.05)"/>
+      <rect x="215" y="100" width="25" height="50" rx="10" fill="rgba(124,58,237,0.06)"/>
+    </svg>
+    <span class="cross">✝</span>
+    <h3 class="footer-title">PHILIPPIANS 2</h3>
+    <p class="footer-verse">VERSES 1 – 18</p>
+    <p class="footer-sub">May this study lead to deeper humility, greater unity, and a heart more aligned with the mind of Christ.</p>
+    <div class="tag-row">
+      <span class="tag">Humility</span><span class="tag">Unity</span><span class="tag">Kenosis</span>
+      <span class="tag">Salvation</span><span class="tag">Joy</span><span class="tag">Service</span>
+    </div>
+  </footer>
 
 </div>
-
 </body>
 </html>
