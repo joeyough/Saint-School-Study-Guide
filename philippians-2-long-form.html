@@ -96,11 +96,19 @@ body {
 .hero-title {
   font-family: 'Cinzel', serif;
   font-size: clamp(42px,9vw,104px);
-  font-weight: 700; line-height: 1.0; margin-bottom: 18px;
+  font-weight: 700; line-height: 1.0; margin-bottom: 6px;
   background: linear-gradient(135deg, var(--amber) 0%, var(--gold) 40%, var(--ruby) 70%, var(--violet) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.hero-verse-range {
+  font-family: 'Cinzel', serif;
+  font-size: 14px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted); -webkit-text-fill-color: var(--muted);
+  margin-bottom: 18px;
 }
 
 .hero-sub {
@@ -293,8 +301,14 @@ body {
   font-size: clamp(28px,4vw,52px); font-weight: 700;
   background: linear-gradient(135deg, var(--amber), var(--gold), var(--ruby));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text; margin-bottom: 16px;
+  background-clip: text; margin-bottom: 4px;
   position: relative; z-index:1;
+}
+.close-verse-range {
+  font-family: 'Cinzel', serif; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted); -webkit-text-fill-color: var(--muted);
+  margin-bottom: 16px; position: relative; z-index:1;
 }
 .close-sub {
   font-size: 16px; font-style: italic; font-weight: 300;
@@ -312,7 +326,6 @@ body {
   color: var(--muted); -webkit-text-fill-color: var(--muted);
 }
 
-/* Arch SVG helper */
 svg.arch { position: absolute; pointer-events: none; }
 
 /* ═══════════════════════════════════════
@@ -333,13 +346,11 @@ svg.arch { position: absolute; pointer-events: none; }
     font-size: 9px;
   }
 
-  /* Shrink glows on mobile */
   .glow {
     filter: blur(60px);
     opacity: 0.7;
   }
 
-  /* Hero */
   .hero-sub {
     font-size: 15px;
     margin-bottom: 28px;
@@ -350,13 +361,11 @@ svg.arch { position: absolute; pointer-events: none; }
     margin-left: 8px;
   }
 
-  /* Arch SVGs — hide or shrink */
   svg.arch {
     opacity: 0.05 !important;
     max-width: 200px;
   }
 
-  /* Slide head */
   .slide-head {
     margin-bottom: 20px;
     padding-bottom: 14px;
@@ -376,7 +385,6 @@ svg.arch { position: absolute; pointer-events: none; }
     font-size: 8px;
   }
 
-  /* All grids → single column on mobile */
   .q-grid {
     grid-template-columns: 1fr !important;
     gap: 12px;
@@ -395,7 +403,6 @@ svg.arch { position: absolute; pointer-events: none; }
     font-size: 12px;
   }
 
-  /* Two-panel → stacked */
   .two-panel {
     grid-template-columns: 1fr;
     gap: 24px;
@@ -409,12 +416,10 @@ svg.arch { position: absolute; pointer-events: none; }
     font-size: 14px;
   }
 
-  /* Q4 standalone */
   .q4-text {
     font-size: 15px;
   }
 
-  /* Reflection */
   .reflect-q {
     font-size: clamp(20px, 6vw, 32px);
     padding: 0 8px;
@@ -424,7 +429,6 @@ svg.arch { position: absolute; pointer-events: none; }
     display: none;
   }
 
-  /* Apologetics */
   .apol-q {
     font-size: clamp(20px, 5.5vw, 32px);
   }
@@ -438,7 +442,6 @@ svg.arch { position: absolute; pointer-events: none; }
     padding: 14px 18px;
   }
 
-  /* Closing */
   .close-cross {
     font-size: 40px;
   }
@@ -481,7 +484,6 @@ svg.arch { position: absolute; pointer-events: none; }
   }
 }
 
-/* Desktop print override — keep landscape */
 @media print {
   .slide {
     min-height: 100vh;
@@ -521,6 +523,7 @@ svg.arch { position: absolute; pointer-events: none; }
       <span class="eyebrow-text">Bible Study · Discussion Guide</span>
     </div>
     <h1 class="hero-title">Philippians 2</h1>
+    <div class="hero-verse-range">Verses 1 – 18</div>
     <p class="hero-sub">A guided discussion exploring humility, unity, Christ's example, and what it means to work out your salvation.</p>
     <div class="hero-meta">
       <div class="gem-row">
@@ -550,15 +553,15 @@ svg.arch { position: absolute; pointer-events: none; }
   </div>
   <div class="q-grid" style="grid-template-columns:repeat(3,1fr);">
     <div class="q-card">
-      <div class="q-num">Q 01</div>
+      <div class="q-num">Q 01 · Verse 1</div>
       <div class="q-text">What do these terms mean? Does one specifically speak to you? Why does he say <em>if</em>?</div>
     </div>
     <div class="q-card">
-      <div class="q-num">Q 02</div>
+      <div class="q-num">Q 02 · Verse 2</div>
       <div class="q-text">How did we get so far from this in the modern church? How can the church get back to a spirit of unity?</div>
     </div>
     <div class="q-card">
-      <div class="q-num">Q 03</div>
+      <div class="q-num">Q 03 · Verse 3</div>
       <div class="q-text">Who is someone you know that does this well? How did their selflessness inspire you?</div>
     </div>
   </div>
@@ -577,7 +580,7 @@ svg.arch { position: absolute; pointer-events: none; }
     <span class="head-title">The Opposite of Humility</span>
   </div>
   <div class="q4-standalone">
-    <div class="q4-num">Q 04</div>
+    <div class="q4-num">Q 04 · Verse 4</div>
     <p class="q4-text">Can you think of a biblical example where someone did the opposite? What were the ramifications?</p>
   </div>
   <div class="two-panel">
@@ -616,18 +619,18 @@ svg.arch { position: absolute; pointer-events: none; }
   </div>
   <div class="q-grid" style="grid-template-columns:repeat(3,1fr);">
     <div class="q-card">
-      <div class="q-num">Q 05</div>
+      <div class="q-num">Q 05 · Verse 5</div>
       <div class="q-text">What is one way that Christ demonstrated this kind of humility?</div>
     </div>
     <div class="q-card">
-      <div class="q-num">Q 06</div>
+      <div class="q-num">Q 06 · Verse 6</div>
       <div class="q-text">What do you think he means by "did not consider equality something to be grasped"?</div>
       <div class="q-notes">
         <div class="q-note">Seized or held onto</div>
       </div>
     </div>
     <div class="q-card">
-      <div class="q-num">Q 07</div>
+      <div class="q-num">Q 07 · Verse 7</div>
       <div class="q-text">What do you think he means by <em>empties himself</em>?</div>
       <div class="q-notes">
         <div class="q-note">Poured out his privileges</div>
@@ -654,7 +657,7 @@ svg.arch { position: absolute; pointer-events: none; }
     <rect x="110" y="300" width="80" height="80" fill="rgba(224,58,58,0.3)"/>
     <rect x="200" y="300" width="70" height="80" fill="rgba(34,211,238,0.3)"/>
   </svg>
-  <p class="reflect-tag">Q 08 · Personal Reflection</p>
+  <p class="reflect-tag">Q 08 · Verse 8 · Personal Reflection</p>
   <p class="reflect-q">"What's an area of obedience<br>you need to humble yourself in?"</p>
   <div class="reflect-gems">
     <div class="rg" style="background:var(--ruby);box-shadow:0 0 10px var(--ruby);"></div>
@@ -669,7 +672,7 @@ svg.arch { position: absolute; pointer-events: none; }
 <!-- ══ SLIDE 6: Q9 APOLOGETICS ══ -->
 <div class="slide slide-apol">
   <div class="glow" style="width:380px;height:380px;top:-60px;right:0;background:rgba(251,191,36,0.07);"></div>
-  <div class="apol-pill">◆ &nbsp;Q 09 · Apologetics</div>
+  <div class="apol-pill">◆ &nbsp;Q 09 · Verse 9 · Apologetics</div>
   <p class="apol-q">How would you defend the doctrine<br>of the Trinity?</p>
   <div class="apol-quote">"This verse proves Jesus and God are not the same person… how could he exalt himself?"</div>
   <div class="slide-num">06 / 10</div>
@@ -688,7 +691,7 @@ svg.arch { position: absolute; pointer-events: none; }
   </div>
   <div class="q-grid" style="grid-template-columns:1fr 1fr;">
     <div class="q-card">
-      <div class="q-num">Q 10</div>
+      <div class="q-num">Q 10 · Verse 10</div>
       <div class="q-text">What do you think he means by <em>under the earth</em>?</div>
       <div class="q-notes">
         <div class="q-note">Revelation 20:1–6</div>
@@ -698,7 +701,7 @@ svg.arch { position: absolute; pointer-events: none; }
       </div>
     </div>
     <div class="q-card">
-      <div class="q-num">Q 11</div>
+      <div class="q-num">Q 11 · Verse 11</div>
       <div class="q-text">So those who don't believe will even confess and bow?</div>
     </div>
   </div>
@@ -719,11 +722,11 @@ svg.arch { position: absolute; pointer-events: none; }
   </div>
   <div class="q-grid" style="grid-template-columns:repeat(3,1fr);">
     <div class="q-card">
-      <div class="q-num">Q 12</div>
+      <div class="q-num">Q 12 · Verse 12</div>
       <div class="q-text">What does it mean to <em>work out</em> your salvation? I thought it was finished… what does fear and trembling have to do with it?</div>
     </div>
     <div class="q-card">
-      <div class="q-num">Q 13</div>
+      <div class="q-num">Q 13 · Verse 13</div>
       <div class="q-text">How can we find a balance between working out our salvation (call to action) and "let go and let God"?</div>
       <div class="q-notes">
         <div class="q-note">Philippians 4:6–7</div>
@@ -732,7 +735,7 @@ svg.arch { position: absolute; pointer-events: none; }
       </div>
     </div>
     <div class="q-card">
-      <div class="q-num">Q 14</div>
+      <div class="q-num">Q 14 · Verse 14</div>
       <div class="q-text">How can we get to a heart posture that allows for this?</div>
     </div>
   </div>
@@ -753,11 +756,11 @@ svg.arch { position: absolute; pointer-events: none; }
   </div>
   <div class="q-grid" style="grid-template-columns:repeat(2,1fr);">
     <div class="q-card">
-      <div class="q-num">Q 15</div>
+      <div class="q-num">Q 15 · Verse 15</div>
       <div class="q-text">What does this verse mean to you?</div>
     </div>
     <div class="q-card">
-      <div class="q-num">Q 16</div>
+      <div class="q-num">Q 16 · Verse 16</div>
       <div class="q-text">What is the word of life? What is the day of Christ? What does it mean to run or labor in vain?</div>
       <div class="q-notes">
         <div class="q-note">Galatians 2:2</div>
@@ -766,11 +769,11 @@ svg.arch { position: absolute; pointer-events: none; }
       </div>
     </div>
     <div class="q-card">
-      <div class="q-num">Q 17</div>
+      <div class="q-num">Q 17 · Verse 17</div>
       <div class="q-text">What is a drink offering? What do service and faith have to do with each other?</div>
     </div>
     <div class="q-card">
-      <div class="q-num">Q 18</div>
+      <div class="q-num">Q 18 · Verse 18</div>
       <div class="q-text">How can we rejoice and share joy in a crooked and perverse generation?</div>
     </div>
   </div>
@@ -788,6 +791,7 @@ svg.arch { position: absolute; pointer-events: none; }
   </svg>
   <div class="close-cross">✝</div>
   <h2 class="close-title">Philippians 2</h2>
+  <div class="close-verse-range">Verses 1 – 18</div>
   <p class="close-sub">May this study lead to deeper humility, greater unity, and a heart more aligned with the mind of Christ.</p>
   <div class="tag-row">
     <span class="tag">Humility</span>
