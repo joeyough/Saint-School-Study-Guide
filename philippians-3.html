@@ -1,586 +1,612 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Philippians 3 — Bible Study</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Philippians 2 — Bible Study</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+/* Force dark mode always — override OS/browser preference */
+html { color-scheme: dark only; }
+@media (prefers-color-scheme: light) {
+  html { background: #0a0c10; }
+}
 
-  <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+:root {
+  --bg:        #0a0c10;
+  --bg2:       #0f1118;
+  --panel:     #13161f;
+  --border:    rgba(255,255,255,0.08);
+  --ruby:      #e03a3a;
+  --amber:     #f0a500;
+  --sapphire:  #2d8ce0;
+  --emerald:   #2ec97e;
+  --violet:    #a855f7;
+  --rose:      #f472b6;
+  --cyan:      #22d3ee;
+  --gold:      #fbbf24;
+  --white:     #f0f4ff;
+  --muted:     #6b7280;
+  --text:      #c8d0e0;
+}
 
-    html {
-      color-scheme: dark;
-      background: #0a0c10;
-    }
+@page { size: landscape; margin: 0; }
 
-    :root {
-      --bg: #0a0c10;
-      --bg2: #10141c;
-      --panel: #141923;
-      --panel2: #171d29;
-      --border: rgba(255,255,255,0.08);
-      --ruby: #e03a3a;
-      --amber: #f0a500;
-      --sapphire: #2d8ce0;
-      --emerald: #2ec97e;
-      --violet: #a855f7;
-      --rose: #f472b6;
-      --gold: #fbbf24;
-      --text: #d7deeb;
-      --muted: #8e97a8;
-      --white: #f5f7fb;
-      --shadow: 0 10px 30px rgba(0,0,0,0.22);
-      --radius: 18px;
-      --max: 760px;
-    }
+body {
+  font-family: 'Lora', Georgia, serif;
+  background: var(--bg) !important;
+  color: var(--white) !important;
+  margin: 0;
+  -webkit-text-fill-color: var(--white);
+}
 
-    body {
-      font-family: 'Lora', Georgia, serif;
-      background: linear-gradient(180deg, var(--bg) 0%, #0d1016 100%);
-      color: var(--text);
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-      line-height: 1.5;
-    }
+.slide {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 80px;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+  background: var(--bg);
+}
 
-    .wrap {
-      width: 100%;
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 18px 14px 40px;
-    }
+.slide-num {
+  position: absolute;
+  bottom: 28px; right: 72px;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: rgba(255,255,255,0.2);
+  font-family: 'Cinzel', serif;
+  -webkit-text-fill-color: rgba(255,255,255,0.2);
+}
 
-    .page {
-      position: relative;
-      background:
-        radial-gradient(circle at top right, rgba(240,165,0,0.08), transparent 28%),
-        radial-gradient(circle at bottom left, rgba(45,140,224,0.08), transparent 30%),
-        linear-gradient(180deg, var(--bg2), #0e131b);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      margin-bottom: 18px;
-    }
+.glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+}
 
-    .page::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background:
-        linear-gradient(135deg, rgba(251,191,36,0.05), transparent 18%, transparent 82%, rgba(168,85,247,0.04));
-    }
+.content { position: relative; z-index: 1; }
 
-    .page-inner {
-      position: relative;
-      z-index: 1;
-      padding: 22px 16px 20px;
-    }
+/* ── HERO ── */
+.slide-hero { background: var(--bg) !important; align-items: flex-start; }
 
-    .hero {
-      padding-top: 24px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 16px;
-    }
+.hero-eyebrow {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 22px;
+}
+.eyebrow-gem {
+  width: 10px; height: 10px;
+  background: var(--ruby);
+  transform: rotate(45deg);
+  box-shadow: 0 0 14px var(--ruby);
+}
+.eyebrow-text {
+  font-family: 'Cinzel', serif;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--amber); -webkit-text-fill-color: var(--amber);
+}
 
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 12px;
-      font-family: 'Cinzel', serif;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--amber);
-    }
+.hero-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(56px,9vw,104px);
+  font-weight: 700; line-height: 1.0; margin-bottom: 18px;
+  background: linear-gradient(135deg, var(--amber) 0%, var(--gold) 40%, var(--ruby) 70%, var(--violet) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
-    .eyebrow-dot {
-      width: 9px;
-      height: 9px;
-      background: var(--ruby);
-      transform: rotate(45deg);
-      box-shadow: 0 0 10px rgba(224,58,58,0.7);
-      flex-shrink: 0;
-    }
+.hero-sub {
+  font-size: 17px; font-weight: 300; font-style: italic;
+  color: var(--text); -webkit-text-fill-color: var(--text);
+  max-width: 520px; line-height: 1.7; margin-bottom: 40px;
+}
 
-    h1 {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(34px, 8vw, 54px);
-      line-height: 1.05;
-      margin-bottom: 10px;
-      background: linear-gradient(135deg, var(--amber) 0%, var(--gold) 35%, var(--ruby) 68%, var(--violet) 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+.gem-row { display: flex; gap: 6px; align-items: center; }
+.gem { width: 8px; height: 8px; transform: rotate(45deg); }
+.gem-r { background: var(--ruby);    box-shadow: 0 0 8px var(--ruby); }
+.gem-a { background: var(--amber);   box-shadow: 0 0 8px var(--amber); }
+.gem-s { background: var(--sapphire);box-shadow: 0 0 8px var(--sapphire); }
+.gem-e { background: var(--emerald); box-shadow: 0 0 8px var(--emerald); }
+.gem-v { background: var(--violet);  box-shadow: 0 0 8px var(--violet); }
 
-    .sub {
-      font-size: 15px;
-      color: var(--text);
-      opacity: 0.92;
-      line-height: 1.7;
-      margin-bottom: 14px;
-      max-width: 36rem;
-    }
+.badge-label {
+  font-family: 'Cinzel', serif; font-size: 11px;
+  letter-spacing: 0.2em; color: var(--muted);
+  -webkit-text-fill-color: var(--muted);
+  text-transform: uppercase; margin-left: 12px;
+}
 
-    .meta {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      font-family: 'Cinzel', serif;
-      font-size: 10px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
+/* ── SLIDE HEAD ── */
+.slide-head {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 32px; padding-bottom: 18px;
+  border-bottom: 1px solid var(--border);
+  position: relative; z-index: 1;
+}
+.head-gems { display: flex; gap: 5px; }
+.head-gem { width: 7px; height: 7px; transform: rotate(45deg); opacity: 0.85; }
+.head-label {
+  font-family: 'Cinzel', serif; font-size: 9px; font-weight: 600;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--muted); -webkit-text-fill-color: var(--muted);
+}
+.head-title {
+  font-family: 'Cinzel', serif; font-size: 24px; font-weight: 600;
+  color: var(--white); -webkit-text-fill-color: var(--white);
+}
+.head-sep { color: rgba(255,255,255,0.15); -webkit-text-fill-color: rgba(255,255,255,0.15); font-size: 18px; }
 
-    .gems {
-      display: inline-flex;
-      gap: 5px;
-      align-items: center;
-    }
+/* ── Q CARDS ── */
+.q-grid { display: grid; gap: 14px; position: relative; z-index: 1; }
 
-    .gem {
-      width: 8px;
-      height: 8px;
-      transform: rotate(45deg);
-      flex-shrink: 0;
-    }
+.q-card {
+  background: var(--panel) !important;
+  border-radius: 10px; padding: 18px 20px;
+  display: flex; flex-direction: column; gap: 9px;
+  position: relative; overflow: hidden;
+  border: 1px solid var(--border);
+}
+.q-card::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+}
+.q-card:nth-child(1)::before { background: linear-gradient(to right, var(--ruby), var(--amber)); }
+.q-card:nth-child(2)::before { background: linear-gradient(to right, var(--sapphire), var(--cyan)); }
+.q-card:nth-child(3)::before { background: linear-gradient(to right, var(--emerald), var(--sapphire)); }
+.q-card:nth-child(4)::before { background: linear-gradient(to right, var(--violet), var(--rose)); }
+.q-card:nth-child(5)::before { background: linear-gradient(to right, var(--amber), var(--ruby)); }
+.q-card:nth-child(6)::before { background: linear-gradient(to right, var(--cyan), var(--emerald)); }
 
-    .gem.r { background: var(--ruby); }
-    .gem.a { background: var(--amber); }
-    .gem.s { background: var(--sapphire); }
-    .gem.e { background: var(--emerald); }
-    .gem.v { background: var(--violet); }
+.q-num {
+  font-family: 'Cinzel', serif; font-size: 9px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+}
+.q-card:nth-child(1) .q-num { color: var(--ruby); -webkit-text-fill-color: var(--ruby); }
+.q-card:nth-child(2) .q-num { color: var(--cyan); -webkit-text-fill-color: var(--cyan); }
+.q-card:nth-child(3) .q-num { color: var(--emerald); -webkit-text-fill-color: var(--emerald); }
+.q-card:nth-child(4) .q-num { color: var(--violet); -webkit-text-fill-color: var(--violet); }
+.q-card:nth-child(5) .q-num { color: var(--amber); -webkit-text-fill-color: var(--amber); }
+.q-card:nth-child(6) .q-num { color: var(--sapphire); -webkit-text-fill-color: var(--sapphire); }
 
-    .section-head {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin: 14px 0 14px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--border);
-    }
+.q-text {
+  font-size: 13.5px; font-weight: 400; line-height: 1.65;
+  color: var(--text); -webkit-text-fill-color: var(--text);
+}
+.q-notes {
+  border-top: 1px solid var(--border); padding-top: 8px;
+  display: flex; flex-direction: column; gap: 3px;
+}
+.q-note {
+  font-size: 11.5px; font-style: italic; font-weight: 300;
+  color: var(--muted); -webkit-text-fill-color: var(--muted);
+  line-height: 1.5; display: flex; gap: 6px; align-items: baseline;
+}
+.q-note::before { content: '◆'; font-size: 6px; color: var(--amber); -webkit-text-fill-color: var(--amber); flex-shrink: 0; position: relative; top: -1px; }
 
-    .section-head .mini-gem {
-      width: 8px;
-      height: 8px;
-      transform: rotate(45deg);
-      background: var(--gold);
-      box-shadow: 0 0 8px rgba(251,191,36,0.5);
-      flex-shrink: 0;
-    }
+/* ── REFLECTION ── */
+.slide-reflect {
+  background: var(--bg2) !important;
+  align-items: center; text-align: center;
+}
+.reflect-tag {
+  font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--rose);
+  -webkit-text-fill-color: var(--rose); margin-bottom: 18px; position: relative; z-index:1;
+}
+.reflect-q {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(22px,3.5vw,40px); font-weight: 600;
+  color: var(--white); -webkit-text-fill-color: var(--white);
+  max-width: 760px; line-height: 1.35; position: relative; z-index:1;
+}
+.reflect-gems { display: flex; gap: 10px; justify-content: center; margin-top: 32px; position: relative; z-index:1; }
+.rg { width: 10px; height: 10px; transform: rotate(45deg); }
 
-    .section-kicker {
-      font-family: 'Cinzel', serif;
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
+/* ── APOLOGETICS ── */
+.slide-apol { background: var(--bg) !important; }
+.apol-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid rgba(251,191,36,0.3);
+  background: rgba(251,191,36,0.06);
+  border-radius: 100px; padding: 5px 18px;
+  font-family: 'Cinzel', serif; font-size: 9px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); -webkit-text-fill-color: var(--gold); margin-bottom: 22px;
+  position: relative; z-index: 1;
+}
+.apol-q {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(24px,3.5vw,40px); font-weight: 600;
+  color: var(--white); -webkit-text-fill-color: var(--white);
+  max-width: 820px; line-height: 1.3; margin-bottom: 28px;
+  position: relative; z-index: 1;
+}
+.apol-quote {
+  background: rgba(45,140,224,0.08);
+  border-left: 3px solid var(--sapphire);
+  border-radius: 0 8px 8px 0;
+  padding: 18px 26px; font-size: 16px;
+  font-style: italic; font-weight: 300;
+  color: rgba(200,208,224,0.75); -webkit-text-fill-color: rgba(200,208,224,0.75);
+  max-width: 740px; line-height: 1.7;
+  position: relative; z-index: 1;
+}
 
-    .section-title {
-      font-family: 'Cinzel', serif;
-      font-size: 20px;
-      color: var(--white);
-      margin-top: 2px;
-    }
+/* ── TWO PANEL ── */
+.two-panel {
+  display: grid; grid-template-columns: 1fr 1px 1fr;
+  gap: 36px; align-items: start;
+  position: relative; z-index: 1;
+}
+.panel-div { background: var(--border); }
+.panel-label {
+  font-family: 'Cinzel', serif; font-size: 9px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--amber); -webkit-text-fill-color: var(--amber); margin-bottom: 14px;
+}
+.panel-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.panel-list li {
+  font-size: 14.5px; font-weight: 300;
+  color: var(--text); -webkit-text-fill-color: var(--text);
+  line-height: 1.6; display: flex; gap: 10px; align-items: flex-start;
+}
+.panel-list li::before { content: '◆'; font-size: 7px; color: var(--emerald); -webkit-text-fill-color: var(--emerald); flex-shrink: 0; margin-top: 5px; }
 
-    .cards {
-      display: grid;
-      gap: 12px;
-    }
+/* ── CLOSING ── */
+.slide-close { background: var(--bg) !important; align-items: center; text-align: center; }
+.close-cross {
+  font-size: 52px; margin-bottom: 20px;
+  filter: drop-shadow(0 0 20px rgba(251,191,36,0.5));
+  position: relative; z-index:1;
+}
+.close-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(28px,4vw,52px); font-weight: 700;
+  background: linear-gradient(135deg, var(--amber), var(--gold), var(--ruby));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; margin-bottom: 16px;
+  position: relative; z-index:1;
+}
+.close-sub {
+  font-size: 16px; font-style: italic; font-weight: 300;
+  color: var(--text); -webkit-text-fill-color: var(--text);
+  max-width: 560px; line-height: 1.7; margin-bottom: 36px;
+  position: relative; z-index:1;
+}
+.tag-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; position: relative; z-index:1; }
+.tag {
+  background: var(--panel) !important;
+  border: 1px solid var(--border);
+  border-radius: 100px; padding: 6px 18px;
+  font-family: 'Cinzel', serif; font-size: 10px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted); -webkit-text-fill-color: var(--muted);
+}
 
-    .card {
-      background: linear-gradient(180deg, var(--panel), var(--panel2));
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 14px 14px 13px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(90deg, var(--ruby), var(--amber), var(--sapphire), var(--emerald), var(--violet));
-      opacity: 0.9;
-    }
-
-    .qnum {
-      font-family: 'Cinzel', serif;
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-      color: var(--amber);
-    }
-
-    .qtext {
-      font-size: 15px;
-      color: var(--text);
-      line-height: 1.65;
-    }
-
-    .notes {
-      margin-top: 10px;
-      padding-top: 10px;
-      border-top: 1px solid var(--border);
-      display: grid;
-      gap: 6px;
-    }
-
-    .note {
-      display: flex;
-      gap: 8px;
-      align-items: flex-start;
-      font-size: 13px;
-      color: var(--muted);
-      font-style: italic;
-      line-height: 1.55;
-    }
-
-    .note::before {
-      content: "◆";
-      color: var(--gold);
-      font-size: 8px;
-      margin-top: 5px;
-      flex-shrink: 0;
-    }
-
-    .highlight {
-      text-align: center;
-      padding: 18px 14px;
-      border: 1px solid rgba(244,114,182,0.18);
-      background: linear-gradient(180deg, rgba(244,114,182,0.08), rgba(168,85,247,0.06));
-      border-radius: 20px;
-      margin-top: 12px;
-      margin-bottom: 4px;
-    }
-
-    .highlight-label {
-      font-family: 'Cinzel', serif;
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--rose);
-      margin-bottom: 10px;
-    }
-
-    .highlight-text {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(22px, 5.5vw, 34px);
-      line-height: 1.35;
-      color: var(--white);
-    }
-
-    .footer-tag {
-      margin-top: 16px;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .tag {
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.03);
-      border-radius: 999px;
-      padding: 6px 11px;
-      font-family: 'Cinzel', serif;
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .page-label {
-      margin-top: 14px;
-      text-align: center;
-      font-family: 'Cinzel', serif;
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.28);
-    }
-
-    @media (min-width: 640px) {
-      .wrap {
-        padding: 24px 20px 56px;
-      }
-
-      .page-inner {
-        padding: 28px 24px 24px;
-      }
-
-      .cards {
-        gap: 14px;
-      }
-
-      .card {
-        padding: 16px 16px 15px;
-      }
-    }
-
-    @media print {
-      body {
-        background: #0a0c10;
-      }
-
-      .wrap {
-        max-width: none;
-        padding: 0;
-      }
-
-      .page {
-        border-radius: 0;
-        margin: 0;
-        min-height: 100vh;
-        page-break-after: always;
-        break-after: page;
-      }
-
-      .page:last-child {
-        page-break-after: auto;
-        break-after: auto;
-      }
-    }
-  </style>
+/* Arch SVG helper */
+svg.arch { position: absolute; pointer-events: none; }
+</style>
 </head>
 <body>
-  <main class="wrap">
 
-    <!-- ═══════════════ PAGE 1 ═══════════════ -->
-    <section class="page">
-      <div class="page-inner">
-        <div class="hero">
-          <div class="eyebrow">
-            <span class="eyebrow-dot"></span>
-            <span>Bible Study · Discussion Guide</span>
-          </div>
+<!-- ══ SLIDE 1: HERO ══ -->
+<div class="slide slide-hero">
+  <div class="glow" style="width:500px;height:500px;top:-100px;right:-80px;background:rgba(224,58,58,0.12);"></div>
+  <div class="glow" style="width:400px;height:400px;bottom:-80px;left:22%;background:rgba(45,140,224,0.10);"></div>
+  <div class="glow" style="width:300px;height:300px;top:30%;left:-60px;background:rgba(168,85,247,0.08);"></div>
 
-          <h1>Philippians 3</h1>
+  <!-- Decorative stained glass arch -->
+  <svg class="arch" style="top:-30px;right:-50px;width:400px;height:500px;opacity:0.2;" viewBox="0 0 200 260" fill="none">
+    <path d="M20 260 L20 100 Q20 20 100 20 Q180 20 180 100 L180 260 Z" stroke="rgba(251,191,36,0.7)" stroke-width="1.5" fill="none"/>
+    <path d="M40 260 L40 108 Q40 44 100 44 Q160 44 160 108 L160 260 Z" stroke="rgba(251,191,36,0.35)" stroke-width="1" fill="none"/>
+    <line x1="100" y1="20" x2="100" y2="260" stroke="rgba(251,191,36,0.25)" stroke-width="1"/>
+    <line x1="20" y1="140" x2="180" y2="140" stroke="rgba(251,191,36,0.25)" stroke-width="1"/>
+    <line x1="20" y1="200" x2="180" y2="200" stroke="rgba(251,191,36,0.25)" stroke-width="1"/>
+    <line x1="60" y1="80" x2="140" y2="80" stroke="rgba(251,191,36,0.18)" stroke-width="1"/>
+    <path d="M40 108 Q40 44 100 44 L100 80 L60 80 L40 108Z" fill="rgba(224,58,58,0.35)"/>
+    <path d="M100 44 Q160 44 160 108 L140 80 L100 80 Z" fill="rgba(45,140,224,0.35)"/>
+    <rect x="20" y="140" width="80" height="60" fill="rgba(46,201,126,0.22)"/>
+    <rect x="100" y="140" width="80" height="60" fill="rgba(168,85,247,0.22)"/>
+    <rect x="20" y="200" width="40" height="60" fill="rgba(224,58,58,0.22)"/>
+    <rect x="60" y="200" width="40" height="60" fill="rgba(240,165,0,0.22)"/>
+    <rect x="100" y="200" width="40" height="60" fill="rgba(45,140,224,0.22)"/>
+    <rect x="140" y="200" width="40" height="60" fill="rgba(46,201,126,0.22)"/>
+  </svg>
 
-          <p class="sub">
-            A guided discussion on counting all things as loss, the pursuit of knowing Christ, and pressing toward the upward call.
-          </p>
-
-          <div class="meta">
-            <span class="gems">
-              <span class="gem r"></span>
-              <span class="gem a"></span>
-              <span class="gem s"></span>
-              <span class="gem e"></span>
-              <span class="gem v"></span>
-            </span>
-            <span>18 Discussion Questions</span>
-          </div>
-        </div>
-
-        <div class="section-head">
-          <span class="mini-gem"></span>
-          <div>
-            <div class="section-kicker">Page One</div>
-            <div class="section-title">Warning, Credentials, Knowing Christ</div>
-          </div>
-        </div>
-
-        <div class="cards">
-          <article class="card">
-            <div class="qnum">Q 01 · Verse 1</div>
-            <div class="qtext">Paul says to <em>rejoice in the Lord</em>. He's writing from prison. How is that possible? What's the difference between joy and happiness?</div>
-          </article>
-
-          <article class="card">
-            <div class="qnum">Q 02 · Verses 2–3</div>
-            <div class="qtext">Paul calls them <em>dogs</em>, <em>evil workers</em>, and <em>mutilators of the flesh</em>. Who is he talking about, and why such aggressive language?</div>
-            <div class="notes">
-              <div class="note">Judaizers — those requiring circumcision for salvation</div>
-              <div class="note">Galatians 5:12 — Paul uses even stronger language</div>
-              <div class="note">"We are the circumcision, who worship by the Spirit of God"</div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="qnum">Q 03 · Verses 4–6</div>
-            <div class="qtext">Paul lists his résumé: circumcised, tribe of Benjamin, Pharisee, zealous, blameless under the law. What would the modern church equivalent of this list look like?</div>
-            <div class="notes">
-              <div class="note">Raised in church, seminary degree, mission trips, worship team</div>
-              <div class="note">Social media following, leadership positions, tithes</div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="qnum">Q 04 · Verses 7–8</div>
-            <div class="qtext">He counted all of that as <em>loss</em> — then goes further and calls it <em>rubbish</em>. What's the difference between those two words? Why the escalation?</div>
-            <div class="notes">
-              <div class="note">Greek: <em>skubalon</em> — dung, refuse, table scraps thrown to dogs</div>
-              <div class="note">Not just worthless — an obstacle to the real thing</div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="qnum">Q 05 · Verse 8</div>
-            <div class="qtext">What is the difference between <em>knowing about</em> Christ and <em>knowing</em> Christ? How do you move from one to the other?</div>
-          </article>
-
-          <article class="card">
-            <div class="qnum">Q 06 · Verse 9</div>
-            <div class="qtext">What is the difference between <em>a righteousness of my own that comes from the law</em> and <em>that which comes through faith in Christ</em>?</div>
-            <div class="notes">
-              <div class="note">Self-righteousness vs. imputed righteousness</div>
-              <div class="note">Romans 10:3 — "Seeking to establish their own"</div>
-              <div class="note">Isaiah 64:6 — "All our righteous deeds are like filthy rags"</div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="qnum">Q 07 · Verses 10–11</div>
-            <div class="qtext">Paul wants to know <em>the power of his resurrection</em> and <em>the fellowship of his sufferings</em>. Why does he pair those two together? Can you have one without the other?</div>
-            <div class="notes">
-              <div class="note">Romans 6:3–5 — United with him in death and resurrection</div>
-              <div class="note">2 Corinthians 4:10 — Carrying the death of Jesus in our body</div>
-              <div class="note">1 Peter 4:13 — Rejoice in sharing Christ's sufferings</div>
-            </div>
-          </article>
-        </div>
-
-        <div class="highlight">
-          <div class="highlight-label">Q 08 · Personal Reflection</div>
-          <div class="highlight-text">What are you still putting confidence in that isn't Christ?</div>
-        </div>
-
-        <div class="cards" style="margin-top:12px;">
-          <article class="card">
-            <div class="qnum">Q 09 · Verse 11</div>
-            <div class="qtext">Paul says <em>that by any means possible</em> he may attain the resurrection. Does that phrase surprise you? What does it reveal about his posture?</div>
-            <div class="notes">
-              <div class="note">Not doubt in salvation — desperation in pursuit</div>
-              <div class="note">Humility: even Paul doesn't presume on God's grace</div>
-            </div>
-          </article>
-        </div>
-
-        <div class="footer-tag">
-          <span class="tag">Identity</span>
-          <span class="tag">Surrender</span>
-          <span class="tag">Knowing Christ</span>
-        </div>
-
-        <div class="page-label">Page 1 of 2</div>
+  <div class="content">
+    <div class="hero-eyebrow">
+      <div class="eyebrow-gem"></div>
+      <span class="eyebrow-text">Bible Study · Discussion Guide</span>
+    </div>
+    <h1 class="hero-title">Philippians 2</h1>
+    <p class="hero-sub">A guided discussion exploring humility, unity, Christ's example, and what it means to work out your salvation.</p>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div class="gem-row">
+        <div class="gem gem-r"></div>
+        <div class="gem gem-a"></div>
+        <div class="gem gem-s"></div>
+        <div class="gem gem-e"></div>
+        <div class="gem gem-v"></div>
       </div>
-    </section>
+      <span class="badge-label">18 Discussion Questions</span>
+    </div>
+  </div>
+  <div class="slide-num">01 / 10</div>
+</div>
 
-    <!-- ═══════════════ PAGE 2 ═══════════════ -->
-    <section class="page">
-      <div class="page-inner">
-        <div class="section-head">
-          <span class="mini-gem"></span>
-          <div>
-            <div class="section-kicker">Page Two</div>
-            <div class="section-title">Pressing On, Maturity, Citizenship</div>
-          </div>
-        </div>
+<!-- ══ SLIDE 2: Q1–3 ══ -->
+<div class="slide" style="background:var(--bg2)!important;">
+  <div class="glow" style="width:350px;height:350px;top:-80px;right:-40px;background:rgba(240,165,0,0.07);"></div>
+  <div class="slide-head">
+    <div class="head-gems">
+      <div class="head-gem" style="background:var(--ruby);box-shadow:0 0 6px var(--ruby);"></div>
+      <div class="head-gem" style="background:var(--amber);box-shadow:0 0 6px var(--amber);"></div>
+    </div>
+    <span class="head-label">Opening Questions</span>
+    <span class="head-sep">·</span>
+    <span class="head-title">Unity &amp; Selflessness</span>
+  </div>
+  <div class="q-grid" style="grid-template-columns:repeat(3,1fr);">
+    <div class="q-card">
+      <div class="q-num">Q 01</div>
+      <div class="q-text">What do these terms mean? Does one specifically speak to you? Why does he say <em>if</em>?</div>
+    </div>
+    <div class="q-card">
+      <div class="q-num">Q 02</div>
+      <div class="q-text">How did we get so far from this in the modern church? How can the church get back to a spirit of unity?</div>
+    </div>
+    <div class="q-card">
+      <div class="q-num">Q 03</div>
+      <div class="q-text">Who is someone you know that does this well? How did their selflessness inspire you?</div>
+    </div>
+  </div>
+  <div class="slide-num">02 / 10</div>
+</div>
 
-        <div class="cards">
-          <article class="card">
-            <div class="qnum">Q 10 · Verse 12</div>
-            <div class="qtext">Paul says <em>not that I have already obtained this or am already perfect</em>. How does this challenge the idea of "arrived" Christianity?</div>
-          </article>
+<!-- ══ SLIDE 3: Q4 ══ -->
+<div class="slide" style="background:var(--bg)!important;">
+  <div class="glow" style="width:300px;height:300px;bottom:-60px;left:-40px;background:rgba(46,201,126,0.07);"></div>
+  <div class="slide-head">
+    <div class="head-gems">
+      <div class="head-gem" style="background:var(--emerald);box-shadow:0 0 6px var(--emerald);"></div>
+    </div>
+    <span class="head-label">Biblical Examples</span>
+    <span class="head-sep">·</span>
+    <span class="head-title">The Opposite of Humility</span>
+  </div>
+  <div style="margin-bottom:20px;position:relative;z-index:1;">
+    <div style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ruby);-webkit-text-fill-color:var(--ruby);margin-bottom:10px;">Q 04</div>
+    <p style="font-size:17px;font-weight:300;font-style:italic;color:var(--text);-webkit-text-fill-color:var(--text);line-height:1.7;max-width:820px;">Can you think of a biblical example where someone did the opposite? What were the ramifications?</p>
+  </div>
+  <div class="two-panel">
+    <div>
+      <div class="panel-label">Biblical Examples</div>
+      <ul class="panel-list">
+        <li>Judas</li>
+        <li>Ananias and Saphira</li>
+        <li>"Trying to justify himself" — Luke 10:29</li>
+      </ul>
+    </div>
+    <div class="panel-div"></div>
+    <div>
+      <div class="panel-label">For Discussion</div>
+      <ul class="panel-list">
+        <li>What was the root motive in each case?</li>
+        <li>How did pride distort their relationship with God and others?</li>
+        <li>What can we learn from their consequences?</li>
+      </ul>
+    </div>
+  </div>
+  <div class="slide-num">03 / 10</div>
+</div>
 
-          <article class="card">
-            <div class="qnum">Q 11 · Verses 13–14</div>
-            <div class="qtext"><em>Forgetting what lies behind and straining forward to what lies ahead.</em> What do you need to forget? What does it look like to strain forward?</div>
-            <div class="notes">
-              <div class="note">"One thing I do" — not ten things, not five. One.</div>
-              <div class="note">Past failures and past achievements can both hold you back</div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="qnum">Q 12 · Verse 14</div>
-            <div class="qtext">What is <em>the prize of the upward call of God in Christ Jesus</em>?</div>
-            <div class="notes">
-              <div class="note">2 Timothy 4:7–8 — "The crown of righteousness"</div>
-              <div class="note">Not just heaven — the fullness of knowing Christ forever</div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="qnum">Q 13 · Verse 15</div>
-            <div class="qtext"><em>Let those of us who are mature think this way.</em> What does spiritual maturity actually look like? How is it different from what the world calls maturity?</div>
-          </article>
-
-          <article class="card">
-            <div class="qnum">Q 14 · Verse 16</div>
-            <div class="qtext"><em>Let us hold true to what we have attained.</em> What has God already revealed to you that you're not yet walking in?</div>
-          </article>
-
-          <article class="card">
-            <div class="qnum">Q 15 · Verse 17</div>
-            <div class="qtext">Paul says <em>join in imitating me</em>. Is it appropriate for a leader to say "follow my example"? When does that become dangerous?</div>
-            <div class="notes">
-              <div class="note">1 Corinthians 11:1 — "Imitate me, as I imitate Christ"</div>
-              <div class="note">The qualifier matters: only as far as they follow Christ</div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="qnum">Q 16 · Verses 18–19</div>
-            <div class="qtext">Who are the <em>enemies of the cross</em>? What does it mean that <em>their god is their stomach</em> and <em>they glory in their shame</em>?</div>
-            <div class="notes">
-              <div class="note">Romans 16:18 — "They serve their own appetites"</div>
-              <div class="note">"Their minds are set on earthly things" — the root issue</div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="qnum">Q 17 · Verse 20</div>
-            <div class="qtext"><em>Our citizenship is in heaven.</em> How should this identity shape the way we engage with politics, culture, and daily life?</div>
-          </article>
-
-          <article class="card">
-            <div class="qnum">Q 18 · Verse 21</div>
-            <div class="qtext">Christ <em>will transform our lowly body to be like his glorious body</em>. How does the promise of future transformation affect how you live right now?</div>
-            <div class="notes">
-              <div class="note">1 John 3:2 — "When he appears, we shall be like him"</div>
-              <div class="note">Romans 8:18 — Present sufferings not worth comparing</div>
-            </div>
-          </article>
-        </div>
-
-        <div class="highlight" style="margin-top:16px;">
-          <div class="highlight-label">Closing Thought</div>
-          <div class="highlight-text">May this study ignite a holy dissatisfaction with everything that isn't Christ, and a relentless pursuit of the One who pursued us first.</div>
-        </div>
-
-        <div class="footer-tag">
-          <span class="tag">Perseverance</span>
-          <span class="tag">Maturity</span>
-          <span class="tag">Citizenship</span>
-        </div>
-
-        <div class="page-label">Page 2 of 2</div>
+<!-- ══ SLIDE 4: Q5–7 ══ -->
+<div class="slide" style="background:var(--bg2)!important;">
+  <div class="glow" style="width:380px;height:380px;top:-60px;right:-60px;background:rgba(45,140,224,0.08);"></div>
+  <div class="slide-head">
+    <div class="head-gems">
+      <div class="head-gem" style="background:var(--sapphire);box-shadow:0 0 6px var(--sapphire);"></div>
+      <div class="head-gem" style="background:var(--cyan);box-shadow:0 0 6px var(--cyan);"></div>
+    </div>
+    <span class="head-label">Christ's Example</span>
+    <span class="head-sep">·</span>
+    <span class="head-title">The Kenosis — Emptying Himself</span>
+  </div>
+  <div class="q-grid" style="grid-template-columns:repeat(3,1fr);">
+    <div class="q-card">
+      <div class="q-num">Q 05</div>
+      <div class="q-text">What is one way that Christ demonstrated this kind of humility?</div>
+    </div>
+    <div class="q-card">
+      <div class="q-num">Q 06</div>
+      <div class="q-text">What do you think he means by "did not consider equality something to be grasped"?</div>
+      <div class="q-notes">
+        <div class="q-note">Seized or held onto</div>
       </div>
-    </section>
+    </div>
+    <div class="q-card">
+      <div class="q-num">Q 07</div>
+      <div class="q-text">What do you think he means by <em>empties himself</em>?</div>
+      <div class="q-notes">
+        <div class="q-note">Poured out his privileges</div>
+        <div class="q-note">He removed his rights</div>
+        <div class="q-note">Willing to weaken</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">04 / 10</div>
+</div>
 
-  </main>
+<!-- ══ SLIDE 5: Q8 REFLECTION ══ -->
+<div class="slide slide-reflect">
+  <div class="glow" style="width:600px;height:600px;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(244,114,182,0.06);"></div>
+  <svg class="arch" style="top:50%;left:50%;transform:translate(-50%,-55%);width:420px;height:520px;opacity:0.07;" viewBox="0 0 300 380" fill="none">
+    <path d="M30 380 L30 150 Q30 30 150 30 Q270 30 270 150 L270 380 Z" stroke="rgba(251,191,36,0.8)" stroke-width="2" fill="none"/>
+    <line x1="150" y1="30" x2="150" y2="380" stroke="rgba(251,191,36,0.5)" stroke-width="1.5"/>
+    <line x1="30" y1="200" x2="270" y2="200" stroke="rgba(251,191,36,0.5)" stroke-width="1.5"/>
+    <path d="M30 150 Q30 30 150 30 L150 120 L80 120 Z" fill="rgba(224,58,58,0.6)"/>
+    <path d="M150 30 Q270 30 270 150 L200 120 L150 120 Z" fill="rgba(45,140,224,0.6)"/>
+    <rect x="30" y="200" width="110" height="90" fill="rgba(46,201,126,0.4)"/>
+    <rect x="160" y="200" width="110" height="90" fill="rgba(168,85,247,0.4)"/>
+    <rect x="30" y="300" width="70" height="80" fill="rgba(240,165,0,0.4)"/>
+    <rect x="110" y="300" width="80" height="80" fill="rgba(224,58,58,0.3)"/>
+    <rect x="200" y="300" width="70" height="80" fill="rgba(34,211,238,0.3)"/>
+  </svg>
+  <p class="reflect-tag">Q 08 · Personal Reflection</p>
+  <p class="reflect-q">"What's an area of obedience<br>you need to humble yourself in?"</p>
+  <div class="reflect-gems">
+    <div class="rg" style="background:var(--ruby);box-shadow:0 0 10px var(--ruby);"></div>
+    <div class="rg" style="background:var(--amber);box-shadow:0 0 10px var(--amber);"></div>
+    <div class="rg" style="background:var(--sapphire);box-shadow:0 0 10px var(--sapphire);"></div>
+    <div class="rg" style="background:var(--emerald);box-shadow:0 0 10px var(--emerald);"></div>
+    <div class="rg" style="background:var(--violet);box-shadow:0 0 10px var(--violet);"></div>
+  </div>
+  <div class="slide-num">05 / 10</div>
+</div>
+
+<!-- ══ SLIDE 6: Q9 APOLOGETICS ══ -->
+<div class="slide slide-apol">
+  <div class="glow" style="width:380px;height:380px;top:-60px;right:0;background:rgba(251,191,36,0.07);"></div>
+  <div class="apol-pill">◆ &nbsp;Q 09 · Apologetics</div>
+  <p class="apol-q">How would you defend the doctrine<br>of the Trinity?</p>
+  <div class="apol-quote">"This verse proves Jesus and God are not the same person… how could he exalt himself?"</div>
+  <div class="slide-num">06 / 10</div>
+</div>
+
+<!-- ══ SLIDE 7: Q10–11 ══ -->
+<div class="slide" style="background:var(--bg2)!important;">
+  <div class="glow" style="width:350px;height:350px;bottom:-60px;right:-40px;background:rgba(168,85,247,0.07);"></div>
+  <div class="slide-head">
+    <div class="head-gems">
+      <div class="head-gem" style="background:var(--violet);box-shadow:0 0 6px var(--violet);"></div>
+    </div>
+    <span class="head-label">Every Knee Shall Bow</span>
+    <span class="head-sep">·</span>
+    <span class="head-title">Under the Earth &amp; Universal Confession</span>
+  </div>
+  <div class="q-grid" style="grid-template-columns:1fr 1fr;">
+    <div class="q-card">
+      <div class="q-num">Q 10</div>
+      <div class="q-text">What do you think he means by <em>under the earth</em>?</div>
+      <div class="q-notes">
+        <div class="q-note">Revelation 20:1–6</div>
+        <div class="q-note">"Dead in Christ" — 1 Thess. 4:13–18</div>
+        <div class="q-note">"Rest of the dead" — John 5:28–29</div>
+        <div class="q-note">"Enemies" — 2 Peter 2:4 / Jude 1:6</div>
+      </div>
+    </div>
+    <div class="q-card">
+      <div class="q-num">Q 11</div>
+      <div class="q-text">So those who don't believe will even confess and bow?</div>
+    </div>
+  </div>
+  <div class="slide-num">07 / 10</div>
+</div>
+
+<!-- ══ SLIDE 8: Q12–14 ══ -->
+<div class="slide" style="background:var(--bg)!important;">
+  <div class="glow" style="width:380px;height:380px;top:-50px;left:-50px;background:rgba(46,201,126,0.07);"></div>
+  <div class="slide-head">
+    <div class="head-gems">
+      <div class="head-gem" style="background:var(--emerald);box-shadow:0 0 6px var(--emerald);"></div>
+      <div class="head-gem" style="background:var(--cyan);box-shadow:0 0 6px var(--cyan);"></div>
+    </div>
+    <span class="head-label">Salvation &amp; Surrender</span>
+    <span class="head-sep">·</span>
+    <span class="head-title">Working Out What God Works In</span>
+  </div>
+  <div class="q-grid" style="grid-template-columns:repeat(3,1fr);">
+    <div class="q-card">
+      <div class="q-num">Q 12</div>
+      <div class="q-text">What does it mean to <em>work out</em> your salvation? I thought it was finished… what does fear and trembling have to do with it?</div>
+    </div>
+    <div class="q-card">
+      <div class="q-num">Q 13</div>
+      <div class="q-text">How can we find a balance between working out our salvation (call to action) and "let go and let God"?</div>
+      <div class="q-notes">
+        <div class="q-note">Philippians 4:6–7</div>
+        <div class="q-note">Ephesians 3:14–21</div>
+        <div class="q-note">Philippians 2:1</div>
+      </div>
+    </div>
+    <div class="q-card">
+      <div class="q-num">Q 14</div>
+      <div class="q-text">How can we get to a heart posture that allows for this?</div>
+    </div>
+  </div>
+  <div class="slide-num">08 / 10</div>
+</div>
+
+<!-- ══ SLIDE 9: Q15–18 ══ -->
+<div class="slide" style="background:var(--bg2)!important;">
+  <div class="glow" style="width:320px;height:320px;bottom:-40px;right:10%;background:rgba(240,165,0,0.07);"></div>
+  <div class="slide-head">
+    <div class="head-gems">
+      <div class="head-gem" style="background:var(--gold);box-shadow:0 0 6px var(--gold);"></div>
+      <div class="head-gem" style="background:var(--rose);box-shadow:0 0 6px var(--rose);"></div>
+    </div>
+    <span class="head-label">Closing Questions</span>
+    <span class="head-sep">·</span>
+    <span class="head-title">Joy, Service &amp; Running the Race</span>
+  </div>
+  <div class="q-grid" style="grid-template-columns:repeat(2,1fr);">
+    <div class="q-card">
+      <div class="q-num">Q 15</div>
+      <div class="q-text">What does this verse mean to you?</div>
+    </div>
+    <div class="q-card">
+      <div class="q-num">Q 16</div>
+      <div class="q-text">What is the word of life? What is the day of Christ? What does it mean to run or labor in vain?</div>
+      <div class="q-notes">
+        <div class="q-note">Galatians 2:2</div>
+        <div class="q-note">1 Thessalonians 3:5</div>
+        <div class="q-note">Matthew 13</div>
+      </div>
+    </div>
+    <div class="q-card">
+      <div class="q-num">Q 17</div>
+      <div class="q-text">What is a drink offering? What do service and faith have to do with each other?</div>
+    </div>
+    <div class="q-card">
+      <div class="q-num">Q 18</div>
+      <div class="q-text">How can we rejoice and share joy in a crooked and perverse generation?</div>
+    </div>
+  </div>
+  <div class="slide-num">09 / 10</div>
+</div>
+
+<!-- ══ SLIDE 10: CLOSE ══ -->
+<div class="slide slide-close">
+  <div class="glow" style="width:500px;height:500px;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(251,191,36,0.06);"></div>
+  <!-- Four arched windows echoing the image -->
+  <svg class="arch" style="bottom:0;left:0;right:0;width:100%;height:200px;opacity:0.07;" viewBox="0 0 800 200" fill="none" preserveAspectRatio="none">
+    <path d="M30 200 L30 100 Q30 40 80 40 Q130 40 130 100 L130 200Z" fill="rgba(224,58,58,0.5)" stroke="rgba(251,191,36,0.4)" stroke-width="1"/>
+    <path d="M180 200 L180 100 Q180 40 230 40 Q280 40 280 100 L280 200Z" fill="rgba(45,140,224,0.5)" stroke="rgba(251,191,36,0.4)" stroke-width="1"/>
+    <path d="M330 200 L330 100 Q330 40 380 40 Q430 40 430 100 L430 200Z" fill="rgba(46,201,126,0.5)" stroke="rgba(251,191,36,0.4)" stroke-width="1"/>
+    <path d="M480 200 L480 100 Q480 40 530 40 Q580 40 580 100 L580 200Z" fill="rgba(168,85,247,0.5)" stroke="rgba(251,191,36,0.4)" stroke-width="1"/>
+  </svg>
+  <div class="close-cross">✝</div>
+  <h2 class="close-title">Philippians 2</h2>
+  <p class="close-sub">May this study lead to deeper humility, greater unity, and a heart more aligned with the mind of Christ.</p>
+  <div class="tag-row">
+    <span class="tag">Humility</span>
+    <span class="tag">Unity</span>
+    <span class="tag">Kenosis</span>
+    <span class="tag">Salvation</span>
+    <span class="tag">Joy</span>
+    <span class="tag">Service</span>
+  </div>
+  <div class="slide-num">10 / 10</div>
+</div>
+
 </body>
 </html>
