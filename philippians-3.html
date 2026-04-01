@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Philippians 3 — Bible Study</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      color-scheme: dark;
+      background: #0a0c10;
+    }
+
+    :root {
+      --bg: #0a0c10;
+      --bg2: #10141c;
+      --panel: #141923;
+      --panel2: #171d29;
+      --border: rgba(255,255,255,0.08);
+      --ruby: #e03a3a;
+      --amber: #f0a500;
+      --sapphire: #2d8ce0;
+      --emerald: #2ec97e;
+      --violet: #a855f7;
+      --rose: #f472b6;
+      --gold: #fbbf24;
+      --text: #d7deeb;
+      --muted: #8e97a8;
+      --white: #f5f7fb;
+      --shadow: 0 10px 30px rgba(0,0,0,0.22);
+      --radius: 18px;
+      --max: 760px;
+    }
+
+    body {
+      font-family: 'Lora', Georgia, serif;
+      background: linear-gradient(180deg, var(--bg) 0%, #0d1016 100%);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      line-height: 1.5;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 18px 14px 40px;
+    }
+
+    .page {
+      position: relative;
+      background:
+        radial-gradient(circle at top right, rgba(240,165,0,0.08), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(45,140,224,0.08), transparent 30%),
+        linear-gradient(180deg, var(--bg2), #0e131b);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      margin-bottom: 18px;
+    }
+
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(135deg, rgba(251,191,36,0.05), transparent 18%, transparent 82%, rgba(168,85,247,0.04));
+    }
+
+    .page-inner {
+      position: relative;
+      z-index: 1;
+      padding: 22px 16px 20px;
+    }
+
+    .hero {
+      padding-top: 24px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 16px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .eyebrow-dot {
+      width: 9px;
+      height: 9px;
+      background: var(--ruby);
+      transform: rotate(45deg);
+      box-shadow: 0 0 10px rgba(224,58,58,0.7);
+      flex-shrink: 0;
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: 1.05;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, var(--amber) 0%, var(--gold) 35%, var(--ruby) 68%, var(--violet) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .sub {
+      font-size: 15px;
+      color: var(--text);
+      opacity: 0.92;
+      line-height: 1.7;
+      margin-bottom: 14px;
+      max-width: 36rem;
+    }
+
+    .meta {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .gems {
+      display: inline-flex;
+      gap: 5px;
+      align-items: center;
+    }
+
+    .gem {
+      width: 8px;
+      height: 8px;
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    .gem.r { background: var(--ruby); }
+    .gem.a { background: var(--amber); }
+    .gem.s { background: var(--sapphire); }
+    .gem.e { background: var(--emerald); }
+    .gem.v { background: var(--violet); }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 14px 0 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-head .mini-gem {
+      width: 8px;
+      height: 8px;
+      transform: rotate(45deg);
+      background: var(--gold);
+      box-shadow: 0 0 8px rgba(251,191,36,0.5);
+      flex-shrink: 0;
+    }
+
+    .section-kicker {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 20px;
+      color: var(--white);
+      margin-top: 2px;
+    }
+
+    .cards {
+      display: grid;
+      gap: 12px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, var(--panel), var(--panel2));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 14px 13px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--ruby), var(--amber), var(--sapphire), var(--emerald), var(--violet));
+      opacity: 0.9;
+    }
+
+    .qnum {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      color: var(--amber);
+    }
+
+    .qtext {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    .notes {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+      display: grid;
+      gap: 6px;
+    }
+
+    .note {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      font-size: 13px;
+      color: var(--muted);
+      font-style: italic;
+      line-height: 1.55;
+    }
+
+    .note::before {
+      content: "◆";
+      color: var(--gold);
+      font-size: 8px;
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+
+    .highlight {
+      text-align: center;
+      padding: 18px 14px;
+      border: 1px solid rgba(244,114,182,0.18);
+      background: linear-gradient(180deg, rgba(244,114,182,0.08), rgba(168,85,247,0.06));
+      border-radius: 20px;
+      margin-top: 12px;
+      margin-bottom: 4px;
+    }
+
+    .highlight-label {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 10px;
+    }
+
+    .highlight-text {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(22px, 5.5vw, 34px);
+      line-height: 1.35;
+      color: var(--white);
+    }
+
+    .footer-tag {
+      margin-top: 16px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      border-radius: 999px;
+      padding: 6px 11px;
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .page-label {
+      margin-top: 14px;
+      text-align: center;
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+    }
+
+    @media (min-width: 640px) {
+      .wrap {
+        padding: 24px 20px 56px;
+      }
+
+      .page-inner {
+        padding: 28px 24px 24px;
+      }
+
+      .cards {
+        gap: 14px;
+      }
+
+      .card {
+        padding: 16px 16px 15px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #0a0c10;
+      }
+
+      .wrap {
+        max-width: none;
+        padding: 0;
+      }
+
+      .page {
+        border-radius: 0;
+        margin: 0;
+        min-height: 100vh;
+        page-break-after: always;
+        break-after: page;
+      }
+
+      .page:last-child {
+        page-break-after: auto;
+        break-after: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+
+    <!-- ═══════════════ PAGE 1 ═══════════════ -->
+    <section class="page">
+      <div class="page-inner">
+        <div class="hero">
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            <span>Bible Study · Discussion Guide</span>
+          </div>
+
+          <h1>Philippians 3</h1>
+
+          <p class="sub">
+            A guided discussion on counting all things as loss, the pursuit of knowing Christ, and pressing toward the upward call.
+          </p>
+
+          <div class="meta">
+            <span class="gems">
+              <span class="gem r"></span>
+              <span class="gem a"></span>
+              <span class="gem s"></span>
+              <span class="gem e"></span>
+              <span class="gem v"></span>
+            </span>
+            <span>18 Discussion Questions</span>
+          </div>
+        </div>
+
+        <div class="section-head">
+          <span class="mini-gem"></span>
+          <div>
+            <div class="section-kicker">Page One</div>
+            <div class="section-title">Warning, Credentials, Knowing Christ</div>
+          </div>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="qnum">Q 01 · Verse 1</div>
+            <div class="qtext">Paul says to <em>rejoice in the Lord</em>. He's writing from prison. How is that possible? What's the difference between joy and happiness?</div>
+          </article>
+
+          <article class="card">
+            <div class="qnum">Q 02 · Verses 2–3</div>
+            <div class="qtext">Paul calls them <em>dogs</em>, <em>evil workers</em>, and <em>mutilators of the flesh</em>. Who is he talking about, and why such aggressive language?</div>
+            <div class="notes">
+              <div class="note">Judaizers — those requiring circumcision for salvation</div>
+              <div class="note">Galatians 5:12 — Paul uses even stronger language</div>
+              <div class="note">"We are the circumcision, who worship by the Spirit of God"</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="qnum">Q 03 · Verses 4–6</div>
+            <div class="qtext">Paul lists his résumé: circumcised, tribe of Benjamin, Pharisee, zealous, blameless under the law. What would the modern church equivalent of this list look like?</div>
+            <div class="notes">
+              <div class="note">Raised in church, seminary degree, mission trips, worship team</div>
+              <div class="note">Social media following, leadership positions, tithes</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="qnum">Q 04 · Verses 7–8</div>
+            <div class="qtext">He counted all of that as <em>loss</em> — then goes further and calls it <em>rubbish</em>. What's the difference between those two words? Why the escalation?</div>
+            <div class="notes">
+              <div class="note">Greek: <em>skubalon</em> — dung, refuse, table scraps thrown to dogs</div>
+              <div class="note">Not just worthless — an obstacle to the real thing</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="qnum">Q 05 · Verse 8</div>
+            <div class="qtext">What is the difference between <em>knowing about</em> Christ and <em>knowing</em> Christ? How do you move from one to the other?</div>
+          </article>
+
+          <article class="card">
+            <div class="qnum">Q 06 · Verse 9</div>
+            <div class="qtext">What is the difference between <em>a righteousness of my own that comes from the law</em> and <em>that which comes through faith in Christ</em>?</div>
+            <div class="notes">
+              <div class="note">Self-righteousness vs. imputed righteousness</div>
+              <div class="note">Romans 10:3 — "Seeking to establish their own"</div>
+              <div class="note">Isaiah 64:6 — "All our righteous deeds are like filthy rags"</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="qnum">Q 07 · Verses 10–11</div>
+            <div class="qtext">Paul wants to know <em>the power of his resurrection</em> and <em>the fellowship of his sufferings</em>. Why does he pair those two together? Can you have one without the other?</div>
+            <div class="notes">
+              <div class="note">Romans 6:3–5 — United with him in death and resurrection</div>
+              <div class="note">2 Corinthians 4:10 — Carrying the death of Jesus in our body</div>
+              <div class="note">1 Peter 4:13 — Rejoice in sharing Christ's sufferings</div>
+            </div>
+          </article>
+        </div>
+
+        <div class="highlight">
+          <div class="highlight-label">Q 08 · Personal Reflection</div>
+          <div class="highlight-text">What are you still putting confidence in that isn't Christ?</div>
+        </div>
+
+        <div class="cards" style="margin-top:12px;">
+          <article class="card">
+            <div class="qnum">Q 09 · Verse 11</div>
+            <div class="qtext">Paul says <em>that by any means possible</em> he may attain the resurrection. Does that phrase surprise you? What does it reveal about his posture?</div>
+            <div class="notes">
+              <div class="note">Not doubt in salvation — desperation in pursuit</div>
+              <div class="note">Humility: even Paul doesn't presume on God's grace</div>
+            </div>
+          </article>
+        </div>
+
+        <div class="footer-tag">
+          <span class="tag">Identity</span>
+          <span class="tag">Surrender</span>
+          <span class="tag">Knowing Christ</span>
+        </div>
+
+        <div class="page-label">Page 1 of 2</div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ PAGE 2 ═══════════════ -->
+    <section class="page">
+      <div class="page-inner">
+        <div class="section-head">
+          <span class="mini-gem"></span>
+          <div>
+            <div class="section-kicker">Page Two</div>
+            <div class="section-title">Pressing On, Maturity, Citizenship</div>
+          </div>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="qnum">Q 10 · Verse 12</div>
+            <div class="qtext">Paul says <em>not that I have already obtained this or am already perfect</em>. How does this challenge the idea of "arrived" Christianity?</div>
+          </article>
+
+          <article class="card">
+            <div class="qnum">Q 11 · Verses 13–14</div>
+            <div class="qtext"><em>Forgetting what lies behind and straining forward to what lies ahead.</em> What do you need to forget? What does it look like to strain forward?</div>
+            <div class="notes">
+              <div class="note">"One thing I do" — not ten things, not five. One.</div>
+              <div class="note">Past failures and past achievements can both hold you back</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="qnum">Q 12 · Verse 14</div>
+            <div class="qtext">What is <em>the prize of the upward call of God in Christ Jesus</em>?</div>
+            <div class="notes">
+              <div class="note">2 Timothy 4:7–8 — "The crown of righteousness"</div>
+              <div class="note">Not just heaven — the fullness of knowing Christ forever</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="qnum">Q 13 · Verse 15</div>
+            <div class="qtext"><em>Let those of us who are mature think this way.</em> What does spiritual maturity actually look like? How is it different from what the world calls maturity?</div>
+          </article>
+
+          <article class="card">
+            <div class="qnum">Q 14 · Verse 16</div>
+            <div class="qtext"><em>Let us hold true to what we have attained.</em> What has God already revealed to you that you're not yet walking in?</div>
+          </article>
+
+          <article class="card">
+            <div class="qnum">Q 15 · Verse 17</div>
+            <div class="qtext">Paul says <em>join in imitating me</em>. Is it appropriate for a leader to say "follow my example"? When does that become dangerous?</div>
+            <div class="notes">
+              <div class="note">1 Corinthians 11:1 — "Imitate me, as I imitate Christ"</div>
+              <div class="note">The qualifier matters: only as far as they follow Christ</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="qnum">Q 16 · Verses 18–19</div>
+            <div class="qtext">Who are the <em>enemies of the cross</em>? What does it mean that <em>their god is their stomach</em> and <em>they glory in their shame</em>?</div>
+            <div class="notes">
+              <div class="note">Romans 16:18 — "They serve their own appetites"</div>
+              <div class="note">"Their minds are set on earthly things" — the root issue</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="qnum">Q 17 · Verse 20</div>
+            <div class="qtext"><em>Our citizenship is in heaven.</em> How should this identity shape the way we engage with politics, culture, and daily life?</div>
+          </article>
+
+          <article class="card">
+            <div class="qnum">Q 18 · Verse 21</div>
+            <div class="qtext">Christ <em>will transform our lowly body to be like his glorious body</em>. How does the promise of future transformation affect how you live right now?</div>
+            <div class="notes">
+              <div class="note">1 John 3:2 — "When he appears, we shall be like him"</div>
+              <div class="note">Romans 8:18 — Present sufferings not worth comparing</div>
+            </div>
+          </article>
+        </div>
+
+        <div class="highlight" style="margin-top:16px;">
+          <div class="highlight-label">Closing Thought</div>
+          <div class="highlight-text">May this study ignite a holy dissatisfaction with everything that isn't Christ, and a relentless pursuit of the One who pursued us first.</div>
+        </div>
+
+        <div class="footer-tag">
+          <span class="tag">Perseverance</span>
+          <span class="tag">Maturity</span>
+          <span class="tag">Citizenship</span>
+        </div>
+
+        <div class="page-label">Page 2 of 2</div>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>
